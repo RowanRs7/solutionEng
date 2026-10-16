@@ -152,5 +152,28 @@ class ValidatorTests(unittest.TestCase):
         )
 
 
+class CourseRepositoryTests(unittest.TestCase):
+    def test_course_entry_files_exist_and_readme_links_to_start(self):
+        repository_root = Path(__file__).resolve().parents[1]
+        expected_files = (
+            "README.md",
+            "docs/00-start-here/00-course-introduction.md",
+            "docs/00-start-here/01-learning-guide.md",
+            "docs/00-start-here/02-environment-setup.md",
+            "docs/00-start-here/03-solution-lifecycle.md",
+            "docs/00-start-here/04-knowledge-map.md",
+            "docs/reference/glossary.md",
+            "docs/reference/technology-index.md",
+            "docs/reference/troubleshooting-index.md",
+            "docs/reference/architecture-deliverables.md",
+            "docs/reference/further-learning.md",
+        )
+
+        for relative_path in expected_files:
+            self.assertTrue((repository_root / relative_path).exists(), relative_path)
+        readme = (repository_root / "README.md").read_text(encoding="utf-8")
+        self.assertIn("docs/00-start-here/00-course-introduction.md", readme)
+
+
 if __name__ == "__main__":
     unittest.main()
