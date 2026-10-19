@@ -38,13 +38,21 @@ last_reviewed: 2026-10-19
   - [优先级、范围与验收标准](../01-traditional-solutions/01-discovery-and-requirements/07-priorities-scope-and-acceptance.md)
   - [风险与需求交付物](../01-traditional-solutions/01-discovery-and-requirements/08-risks-and-requirement-deliverables.md)
   - [需求发现阶段综合测评](../01-traditional-solutions/01-discovery-and-requirements/09-stage-assessment.md)
+- AI 解决方案：[模块概览](../02-ai-solutions/00-overview.md)。
+- AI 模块八个单元（按顺序学习）：
+  - [AI 基础](../02-ai-solutions/01-ai-foundations/00-overview.md)
+  - [AI 需求发现与定义](../02-ai-solutions/02-discovery-and-requirements/00-overview.md)
+  - [模型选择与 Prompt 设计](../02-ai-solutions/03-model-and-prompt/00-overview.md)
+  - [Embedding、检索与 RAG](../02-ai-solutions/04-rag-and-knowledge/00-overview.md)
+  - [工具调用、Workflow 与 Agent](../02-ai-solutions/05-tools-and-agents/00-overview.md)
+  - [AI 应用架构与传统集成](../02-ai-solutions/06-ai-application-architecture/00-overview.md)
+  - [评测、安全与治理](../02-ai-solutions/07-evaluation-security-governance/00-overview.md)
+  - [部署、运行与优化](../02-ai-solutions/08-deploy-operate-optimize/00-overview.md)
 - 每个单元的完整课程清单见该单元概览页；按技术主题查[技术索引](../reference/technology-index.md)。
-- AI 解决方案：计划中。
 
 ## 计划中
 
-- AI：基础、需求、模型、Prompt、RAG、工具、Agent、评测、治理和运维。
-- 传统模块的 `card` 技术卡片与 `advanced` 扩展专题（核心课程已全部发布）。
+- 两个知识模块的核心课程均已发布；`card` 技术卡片、`advanced` 扩展专题和企业 AI 集成平台综合实战尚未建设。
 
 “计划中”条目只说明学习路线，不创建失效链接。每个单元发布后，才会加入可点击入口。
 

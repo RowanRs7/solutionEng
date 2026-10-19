@@ -176,15 +176,19 @@ class CourseRepositoryTests(unittest.TestCase):
 
     def test_every_published_unit_has_overview_and_stage_assessment(self):
         repository_root = Path(__file__).resolve().parents[1]
-        module_root = repository_root / "docs/01-traditional-solutions"
-        unit_directories = sorted(path for path in module_root.iterdir() if path.is_dir())
+        module_roots = (
+            repository_root / "docs/01-traditional-solutions",
+            repository_root / "docs/02-ai-solutions",
+        )
 
-        self.assertTrue(unit_directories, "expected at least one published unit")
-        for unit_directory in unit_directories:
-            names = {path.name for path in unit_directory.glob("*.md")}
-            self.assertIn("00-overview.md", names, unit_directory.name)
-            assessments = [name for name in names if name.endswith("-stage-assessment.md")]
-            self.assertEqual(len(assessments), 1, unit_directory.name)
+        for module_root in module_roots:
+            unit_directories = sorted(path for path in module_root.iterdir() if path.is_dir())
+            self.assertTrue(unit_directories, f"expected published units in {module_root.name}")
+            for unit_directory in unit_directories:
+                names = {path.name for path in unit_directory.glob("*.md")}
+                self.assertIn("00-overview.md", names, unit_directory.name)
+                assessments = [name for name in names if name.endswith("-stage-assessment.md")]
+                self.assertEqual(len(assessments), 1, unit_directory.name)
 
 
 if __name__ == "__main__":

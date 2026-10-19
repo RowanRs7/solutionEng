@@ -119,3 +119,67 @@ last_reviewed: 2026-10-19
 | [燃尽率](../01-traditional-solutions/07-operate-and-optimize/04-sli-slo-sla-and-error-budget.md#核心概念) | 当前错误率除以预算允许的错误率，表示错误预算的消耗速度。 |
 | [容量模型](../01-traditional-solutions/07-operate-and-optimize/05-performance-capacity-and-cost.md#核心概念) | 把业务峰值、请求耗时和资源上限换算成可持续承载量并指出瓶颈的判断。 |
 | [复盘](../01-traditional-solutions/07-operate-and-optimize/06-incident-response-and-postmortem.md#核心概念) | 事件结束后对时间线、影响、促成因素与改进项的结构化回顾。 |
+| [Token](../02-ai-solutions/01-ai-foundations/03-transformer-and-llm-intuition.md#核心概念) | 模型处理文本与计费的最小单位，切分方式由分词器决定。 |
+| [上下文窗口](../02-ai-solutions/01-ai-foundations/04-tokens-context-and-attention.md#核心概念) | 一次请求可容纳的输入与输出 token 总量上限，随模型版本变化。 |
+| [温度](../02-ai-solutions/01-ai-foundations/05-generation-sampling-and-nondeterminism.md#核心概念) | 生成前缩放 logits 的系数，越小分布越尖、越大越平坦。 |
+| [Top-p（核采样）](../02-ai-solutions/01-ai-foundations/05-generation-sampling-and-nondeterminism.md#核心概念) | 只保留累计概率达到 p 的最少候选再抽样，用于截断低质量长尾。 |
+| [幻觉](../02-ai-solutions/01-ai-foundations/06-hallucination-and-knowledge-boundaries.md#核心概念) | 模型生成了流畅、但与事实或与本次给定材料不符的内容。 |
+| [Embedding](../02-ai-solutions/01-ai-foundations/07-embedding-rerank-and-multimodal-models.md#核心概念) | 把文本映射成定长向量、使语义相近内容向量也相近的过程。 |
+| [重排（Rerank）](../02-ai-solutions/01-ai-foundations/07-embedding-rerank-and-multimodal-models.md#核心概念) | 在召回结果上用更强模型二次打分，把真正相关的片段排到前面。 |
+| [数据出域](../02-ai-solutions/01-ai-foundations/09-cloud-open-source-local-and-hybrid.md#核心概念) | 数据离开组织控制的网络或合规边界的动作，发往外部服务即成立。 |
+| [AI 适配度](../02-ai-solutions/02-discovery-and-requirements/01-identify-ai-suitable-problems.md#核心概念) | 任务交给 AI 后，整体风险仍在组织可接受范围内的程度。 |
+| [自动化等级](../02-ai-solutions/02-discovery-and-requirements/01-identify-ai-suitable-problems.md#核心概念) | 同一任务可分为给建议、生成草稿、直接执行三档介入程度。 |
+| [混合编排](../02-ai-solutions/02-discovery-and-requirements/02-rules-search-ml-or-llm.md#核心概念) | 按确定性程度把规则、检索与 LLM 串成一条分层处理链路。 |
+| [人在回路](../02-ai-solutions/02-discovery-and-requirements/03-user-tasks-and-human-in-the-loop.md#核心概念) | 把关键判断保留给人工确认，系统只提供建议或草稿。 |
+| [PoC（概念验证）](../02-ai-solutions/02-discovery-and-requirements/06-poc-pilot-and-production.md#核心概念) | 用最小成本回答技术上能不能做到，参与者多为内部人员。 |
+| [试点（pilot）](../02-ai-solutions/02-discovery-and-requirements/06-poc-pilot-and-production.md#核心概念) | 在真实流程中让少量真实用户使用，验证是否值得继续投入。 |
+| [指令层级](../02-ai-solutions/03-model-and-prompt/02-instruction-hierarchy-and-system-prompts.md#核心概念) | 不同来源指令冲突时的优先顺序，系统与开发者高于用户和数据。 |
+| [System Prompt](../02-ai-solutions/03-model-and-prompt/02-instruction-hierarchy-and-system-prompts.md#核心概念) | 应用开发者写给模型的角色、边界与冲突裁决规则，用户不可见。 |
+| [Few-shot](../02-ai-solutions/03-model-and-prompt/03-zero-shot-few-shot-and-examples.md#核心概念) | 在提示词中给出若干条输入输出配对示例，让模型推断格式与尺度。 |
+| [提示词模板](../02-ai-solutions/03-model-and-prompt/04-prompt-templates-and-versioning.md#核心概念) | 带占位符的固定文本，运行时注入变量与上下文后再发给模型。 |
+| [结构化输出](../02-ai-solutions/03-model-and-prompt/05-structured-output-and-json-schema.md#核心概念) | 用机器可读的结构约束模型生成，而不是解析自由文本。 |
+| [流式输出](../02-ai-solutions/03-model-and-prompt/07-streaming-batch-and-async.md#核心概念) | 模型边生成边返回增量，使首字更早出现、改善体感延迟。 |
+| [推理模型](../02-ai-solutions/03-model-and-prompt/08-multimodal-and-reasoning-models.md#核心概念) | 先产出大量不可见推理 token 再作答的模型，更贵也更慢。 |
+| [向量索引](../02-ai-solutions/04-rag-and-knowledge/02-vector-index-and-vector-databases.md#核心概念) | 为高维向量建立、可快速查找近邻的数据结构。 |
+| [ANN（近似最近邻）](../02-ai-solutions/04-rag-and-knowledge/02-vector-index-and-vector-databases.md#核心概念) | 牺牲少量召回换取数量级加速的一类近邻检索策略。 |
+| [片段（chunk）](../02-ai-solutions/04-rag-and-knowledge/04-chunking-and-context-preservation.md#核心概念) | 入库、向量化与检索的最小文本单元，边界只能落在原子单元之间。 |
+| [混合检索](../02-ai-solutions/04-rag-and-knowledge/05-hybrid-search-and-query-rewriting.md#核心概念) | 同时跑关键词与向量两路召回、再融合排序的做法。 |
+| [RRF（倒数排名融合）](../02-ai-solutions/04-rag-and-knowledge/05-hybrid-search-and-query-rewriting.md#核心概念) | 只用各路名次做加权求和的多路融合方法，不依赖原始分数。 |
+| [查询改写](../02-ai-solutions/04-rag-and-knowledge/05-hybrid-search-and-query-rewriting.md#核心概念) | 把用户原话改写成更适合检索的查询，同时保留原始实体。 |
+| [引用（citation）](../02-ai-solutions/04-rag-and-knowledge/07-citations-and-grounded-answers.md#核心概念) | 回答中指向来源位置的标记，应能回到原文与具体版本。 |
+| [权限感知检索](../02-ai-solutions/04-rag-and-knowledge/08-permission-aware-retrieval.md#核心概念) | 检索时按调用者能读什么先过滤，而不是先取回再删。 |
+| [Graph RAG](../02-ai-solutions/04-rag-and-knowledge/11-graph-rag-and-rag-vs-alternatives.md#核心概念) | 先抽取实体与关系建图、再在图上检索的 RAG 变体。 |
+| [Function Calling](../02-ai-solutions/05-tools-and-agents/01-function-calling-mechanics.md#核心概念) | 模型输出结构化的调用意图，参数校验与真正执行都在应用侧。 |
+| [工具描述](../02-ai-solutions/05-tools-and-agents/02-tool-schemas-and-descriptions.md#核心概念) | 模型看到的自然语言说明，决定模型会不会选中这个工具。 |
+| [Workflow](../02-ai-solutions/05-tools-and-agents/04-workflow-vs-agent.md#核心概念) | 由代码预先定好路径、把模型与工具按固定顺序串联的编排。 |
+| [Agent](../02-ai-solutions/05-tools-and-agents/04-workflow-vs-agent.md#核心概念) | 由模型在循环中自行选择工具与终止条件的执行方式。 |
+| [自主性预算](../02-ai-solutions/05-tools-and-agents/04-workflow-vs-agent.md#核心概念) | 对 Agent 的步数、工具范围和花费设定的硬上限。 |
+| [审批断点](../02-ai-solutions/05-tools-and-agents/05-state-machines-branches-and-approval.md#核心概念) | 流程暂停、运行态落库并等待人工决定的节点。 |
+| [短期记忆](../02-ai-solutions/05-tools-and-agents/07-session-and-memory.md#核心概念) | 单次会话内的消息历史与中间状态，会话结束即失效。 |
+| [MCP](../02-ai-solutions/05-tools-and-agents/08-mcp-and-single-vs-multi-agent.md#核心概念) | 用 JSON-RPC 标准化向模型应用暴露上下文与工具的开放协议。 |
+| [沙箱](../02-ai-solutions/05-tools-and-agents/09-tool-reliability-sandbox-and-failure-modes.md#核心概念) | 限制工具可触达的文件系统、网络与命令的资源边界。 |
+| [请求信封](../02-ai-solutions/06-ai-application-architecture/01-production-ai-request-path.md#核心概念) | 随请求传递的元数据，含 trace、租户、用户与配置版本坐标。 |
+| [适配层](../02-ai-solutions/06-ai-application-architecture/03-model-adapter-and-ai-gateway.md#核心概念) | 把各供应商的请求、响应与错误翻译成统一模型的代码层。 |
+| [AI 网关](../02-ai-solutions/06-ai-application-architecture/03-model-adapter-and-ai-gateway.md#核心概念) | 模型流量的统一入口，负责密钥、鉴权、配额、日志与缓存。 |
+| [语义缓存](../02-ai-solutions/06-ai-application-architecture/06-versioning-and-caching.md#核心概念) | 用向量相似度判断问题是否等价来复用答案，代价是可能误命中。 |
+| [版本坐标（bundle）](../02-ai-solutions/06-ai-application-architecture/06-versioning-and-caching.md#核心概念) | 把 Prompt、模型、知识库与检索配置组合成的不可变引用。 |
+| [成本归属](../02-ai-solutions/06-ai-application-architecture/07-rate-limiting-quota-and-cost-attribution.md#核心概念) | 把费用按租户、功能、模型与版本分摊，用于分析与定价。 |
+| [混淆代理](../02-ai-solutions/06-ai-application-architecture/08-sso-rbac-and-permission-propagation.md#核心概念) | 高权限服务被低权限用户诱导，代其执行原本无权做的操作。 |
+| [黄金集（Golden Dataset）](../02-ai-solutions/07-evaluation-security-governance/02-golden-datasets-and-sample-design.md#核心概念) | 人工确认过期望答案与期望行为、用于判定质量的样本集合。 |
+| [忠实度](../02-ai-solutions/07-evaluation-security-governance/03-correctness-relevance-faithfulness.md#核心概念) | 回答中每条断言都能由本次检索到的上下文推出。 |
+| [误差传播](../02-ai-solutions/07-evaluation-security-governance/04-layered-and-end-to-end-evaluation.md#核心概念) | 上游环节的错误向下游传递并被放大，使端到端结果变差。 |
+| [LLM-as-a-Judge](../02-ai-solutions/07-evaluation-security-governance/06-human-review-and-llm-as-a-judge.md#核心概念) | 用模型按量表给答复打分或做两两比较的自动评测方式。 |
+| [回归门禁](../02-ai-solutions/07-evaluation-security-governance/07-regression-ab-and-online-evaluation.md#核心概念) | 断言失败即阻断发布的检查，不靠平均分蒙混过关。 |
+| [影子流量](../02-ai-solutions/07-evaluation-security-governance/07-regression-ab-and-online-evaluation.md#核心概念) | 把生产请求复制给新版本、只记录不返回给用户的验证手段。 |
+| [Prompt Injection](../02-ai-solutions/07-evaluation-security-governance/08-prompt-injection-and-data-exfiltration.md#核心概念) | 把指令伪装成内容注入上下文，让模型执行未授权行为。 |
+| [间接注入](../02-ai-solutions/07-evaluation-security-governance/08-prompt-injection-and-data-exfiltration.md#核心概念) | 载荷藏在检索文档、评价或工具返回里的注入，攻击者常是第三方。 |
+| [过度代理](../02-ai-solutions/07-evaluation-security-governance/10-excessive-agency-guardrails-and-approval.md#核心概念) | 模型被授予超出任务所需的工具、权限或自主性。 |
+| [Guardrail](../02-ai-solutions/07-evaluation-security-governance/10-excessive-agency-guardrails-and-approval.md#核心概念) | 模型之外的输入、输出与工具三层约束，任何一层失效都不应越权。 |
+| [托管 API](../02-ai-solutions/08-deploy-operate-optimize/01-hosted-api-self-hosted-and-hybrid.md#核心概念) | 由供应商提供模型与推理算力、按 token 计费的服务形态。 |
+| [自建推理](../02-ai-solutions/08-deploy-operate-optimize/01-hosted-api-self-hosted-and-hybrid.md#核心概念) | 在自有 GPU 上部署推理引擎，权重与请求都在自己网络内。 |
+| [首 Token 延迟（TTFT）](../02-ai-solutions/08-deploy-operate-optimize/03-concurrency-throughput-and-latency.md#核心概念) | 从请求到达到收到第一个输出 token 的时间，决定是否感觉卡住。 |
+| [goodput](../02-ai-solutions/08-deploy-operate-optimize/03-concurrency-throughput-and-latency.md#核心概念) | 满足 SLO 的那部分请求吞吐，衡量真正有用的产能。 |
+| [自耗时](../02-ai-solutions/08-deploy-operate-optimize/05-ai-tracing-and-observability.md#核心概念) | span 总耗时减去其子 span 耗时，用来定位时间花在哪一层。 |
+| [分层排障](../02-ai-solutions/08-deploy-operate-optimize/06-troubleshooting-prompt-retrieval-model-tools.md#核心概念) | 按数据流顺序逐层验证，先定位层再定位根因的排查方法。 |
+| [模型漂移](../02-ai-solutions/08-deploy-operate-optimize/08-provider-limits-model-drift-and-runbook.md#核心概念) | 线上数据分布或模型行为变化，使效果在无新版发布时缓慢下滑。 |
+| [Runbook](../02-ai-solutions/08-deploy-operate-optimize/08-provider-limits-model-drift-and-runbook.md#核心概念) | 面向值班人员的可执行处置手册，含分级、判定、动作与升级路径。 |

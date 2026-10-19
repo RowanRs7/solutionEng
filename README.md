@@ -9,7 +9,7 @@
 ## 当前模块
 
 - 传统解决方案：需求、Web、API、身份、数据、交付和运行（**七个单元已全部发布**）。
-- AI 解决方案：模型、Prompt、RAG、工具、Agent、评测和治理（计划中）。
+- AI 解决方案：模型、Prompt、RAG、工具、Agent、评测和治理（**八个单元已全部发布**）。
 
 ## 传统解决方案单元
 
@@ -20,6 +20,17 @@
 5. [数据与应用架构](docs/01-traditional-solutions/05-data-and-architecture/00-overview.md)
 6. [开发、测试与交付](docs/01-traditional-solutions/06-build-test-deliver/00-overview.md)
 7. [运行与持续优化](docs/01-traditional-solutions/07-operate-and-optimize/00-overview.md)
+
+## AI 解决方案单元
+
+1. [AI 基础](docs/02-ai-solutions/01-ai-foundations/00-overview.md)
+2. [AI 需求发现与定义](docs/02-ai-solutions/02-discovery-and-requirements/00-overview.md)
+3. [模型选择与 Prompt 设计](docs/02-ai-solutions/03-model-and-prompt/00-overview.md)
+4. [Embedding、检索与 RAG](docs/02-ai-solutions/04-rag-and-knowledge/00-overview.md)
+5. [工具调用、Workflow 与 Agent](docs/02-ai-solutions/05-tools-and-agents/00-overview.md)
+6. [AI 应用架构与传统集成](docs/02-ai-solutions/06-ai-application-architecture/00-overview.md)
+7. [评测、安全与治理](docs/02-ai-solutions/07-evaluation-security-governance/00-overview.md)
+8. [部署、运行与优化](docs/02-ai-solutions/08-deploy-operate-optimize/00-overview.md)
 
 ## 目录
 
