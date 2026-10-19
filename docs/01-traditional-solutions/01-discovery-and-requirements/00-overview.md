@@ -11,7 +11,7 @@ prerequisites:
 outcomes:
   - 描述需求发现阶段的输入与输出
   - 按顺序完成本单元课程和阶段测评
-last_reviewed: 2026-10-16
+last_reviewed: 2026-10-19
 ---
 
 # 需求发现与定义
@@ -22,7 +22,7 @@ last_reviewed: 2026-10-16
 
 ## 学习路线
 
-预计学习时间为 **7–9 小时**。课程按以下顺序发布：
+预计学习时间为 **7–9 小时**。课程按以下顺序学习：
 
 1. `01-solution-architect-role.md`：解决方案架构师的工作。
 2. `02-stakeholders-and-business-goals.md`：利益相关者与业务目标。

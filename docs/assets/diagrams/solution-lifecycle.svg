@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="1200" height="520">
+  <defs>
+    <marker id="arrowA" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrowB" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#10b981"/>
+    </marker>
+    <marker id="arrowC" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowE" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#f97316"/>
+    </marker>
+    <marker id="arrowF" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed"/>
+    </marker>
+    <marker id="arrowG" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ef4444"/>
+    </marker>
+    <marker id="arrowH" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280"/>
+    </marker>
+    <filter id="shadowSoft" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <filter id="shadowGlass" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#020617" flood-opacity="0.28"/>
+    </filter>
+    <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', 'Microsoft JhengHei', 'SimHei', sans-serif; }
+    .title { font-size: 30px; font-weight: 700; fill: #111827; }
+    .subtitle { font-size: 14px; font-weight: 500; fill: #6b7280; }
+    .section { font-size: 13px; font-weight: 700; fill: #2563eb; letter-spacing: 1.4px; }
+    .section-sub { font-size: 12px; font-weight: 500; fill: #94a3b8; }
+    .node-title { font-size: 18px; font-weight: 700; fill: #111827; }
+    .node-sub { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .node-type { font-size: 12px; font-weight: 700; fill: #9ca3af; letter-spacing: 0.08em; }
+    .arrow-label { font-size: 12px; font-weight: 600; fill: #6b7280; }
+    .legend { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    .footnote { font-size: 12px; font-weight: 500; fill: #94a3b8; }
+    </style>
+  </defs>
+  <rect width="1200.0" height="520.0" fill="#ffffff"/>
+  <text x="600.0" y="56" text-anchor="middle" class="title">解决方案生命周期</text>
+  <text x="600.0" y="82" text-anchor="middle" class="subtitle">当前课程聚焦：需求发现与定义</text>
+  <rect x="28.0" y="172.0" width="330.0" height="136.0" rx="16.0" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.4" stroke-dasharray="6 5"/>
+  <text x="46.0" y="196.0" class="section">需求发现单元</text>
+  <text x="46.0" y="216.0" class="section-sub">本次已发布</text>
+  <path d="M 174.0,250.0 L 206.0,250.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 338.0,250.0 L 370.0,250.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 502.0,250.0 L 534.0,250.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 666.0,250.0 L 698.0,250.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 830.0,250.0 L 862.0,250.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 994.0,250.0 L 1026.0,250.0" fill="none" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <path d="M 1092.0,286.0 L 1092.0,382.0 L 108.0,382.0 L 108.0,286.0" fill="none" stroke="#ef4444" stroke-width="2.4" marker-end="url(#arrowG)" stroke-dasharray="6,4"/>
+  <rect x="42.0" y="214.0" width="132.0" height="72.0" rx="10.0" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.8" filter="url(#shadowSoft)"/>
+  <text x="108.0" y="232.0" text-anchor="middle" class="node-type">当前课程</text>
+  <text x="108.0" y="256.0" text-anchor="middle" class="node-title">发现需求</text>
+  <rect x="206.0" y="214.0" width="132.0" height="72.0" rx="10.0" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.8" filter="url(#shadowSoft)"/>
+  <text x="272.0" y="232.0" text-anchor="middle" class="node-type">当前课程</text>
+  <text x="272.0" y="256.0" text-anchor="middle" class="node-title">定义需求</text>
+  <rect x="370.0" y="214.0" width="132.0" height="72.0" rx="10.0" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8" filter="url(#shadowSoft)"/>
+  <text x="436.0" y="232.0" text-anchor="middle" class="node-type">方案决策</text>
+  <text x="436.0" y="256.0" text-anchor="middle" class="node-title">设计方案</text>
+  <rect x="534.0" y="214.0" width="132.0" height="72.0" rx="10.0" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8" filter="url(#shadowSoft)"/>
+  <text x="600.0" y="232.0" text-anchor="middle" class="node-type">实现</text>
+  <text x="600.0" y="256.0" text-anchor="middle" class="node-title">开发与集成</text>
+  <rect x="698.0" y="214.0" width="132.0" height="72.0" rx="10.0" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8" filter="url(#shadowSoft)"/>
+  <text x="764.0" y="232.0" text-anchor="middle" class="node-type">质量</text>
+  <text x="764.0" y="256.0" text-anchor="middle" class="node-title">测试与验证</text>
+  <rect x="862.0" y="214.0" width="132.0" height="72.0" rx="10.0" fill="#faf5ff" stroke="#9333ea" stroke-width="1.8" filter="url(#shadowSoft)"/>
+  <text x="928.0" y="232.0" text-anchor="middle" class="node-type">发布</text>
+  <text x="928.0" y="256.0" text-anchor="middle" class="node-title">部署与交付</text>
+  <rect x="1026.0" y="214.0" width="132.0" height="72.0" rx="10.0" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8" filter="url(#shadowSoft)"/>
+  <text x="1092.0" y="232.0" text-anchor="middle" class="node-type">持续改进</text>
+  <text x="1092.0" y="256.0" text-anchor="middle" class="node-title">运行与优化</text>
+  <rect x="551.0" y="352.0" width="98" height="20" rx="6" fill="#ffffff" opacity="0.94"/>
+  <text x="600.0" y="366.0" text-anchor="middle" class="arrow-label">故障 / 指标 / 反馈</text>
+  <line x1="42.0" y1="456.0" x2="72.0" y2="456.0" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrowA)"/>
+  <text x="82.0" y="460.0" class="legend">推荐推进顺序</text>
+  <line x1="42.0" y1="478.0" x2="72.0" y2="478.0" stroke="#ef4444" stroke-width="2.4" marker-end="url(#arrowG)"/>
+  <text x="82.0" y="482.0" class="legend">运行反馈，触发重新发现</text>
+  <text x="42.0" y="504.0" class="footnote">阶段顺序提供共同语言；真实项目会根据证据和变化反复迭代。</text>
+</svg>
