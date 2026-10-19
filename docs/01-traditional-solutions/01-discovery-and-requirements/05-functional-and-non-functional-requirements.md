@@ -173,4 +173,4 @@ last_reviewed: 2026-10-16
 ## 延伸阅读与下一课
 
 - 返回[本单元目录](00-overview.md)。
-- 下一课：系统边界、约束、依赖与假设（尚未发布，请从[本单元目录](00-overview.md)查看课程状态）。
+- 下一课：[系统边界、约束、依赖与假设](06-boundaries-constraints-dependencies-assumptions.md)。

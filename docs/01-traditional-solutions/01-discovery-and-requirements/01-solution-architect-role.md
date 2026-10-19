@@ -193,5 +193,5 @@ last_reviewed: 2026-10-16
 ## 延伸阅读与下一课
 
 - 返回[本单元目录](00-overview.md)。
-- 下一课文件：`02-stakeholders-and-business-goals.md`。
+- 下一课：[利益相关者与业务目标](02-stakeholders-and-business-goals.md)。
 - 可在[架构师交付物](../../reference/architecture-deliverables.md)中查看常见文档用途。

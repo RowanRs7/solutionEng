@@ -201,4 +201,4 @@ last_reviewed: 2026-10-16
 
 - 返回[本单元目录](00-overview.md)。
 - 回看[利益相关者与业务目标](02-stakeholders-and-business-goals.md)。
-- 下一课文件：`04-users-roles-scenarios-and-use-cases.md`。
+- 下一课：[用户、角色、场景与用例](04-users-roles-scenarios-and-use-cases.md)。

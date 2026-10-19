@@ -191,4 +191,4 @@ last_reviewed: 2026-10-16
 
 - 返回[本单元目录](00-overview.md)。
 - 回看[解决方案架构师的工作](01-solution-architect-role.md)。
-- 下一课文件：`03-current-state-and-business-process.md`。
+- 下一课：[现状调研与业务流程](03-current-state-and-business-process.md)。

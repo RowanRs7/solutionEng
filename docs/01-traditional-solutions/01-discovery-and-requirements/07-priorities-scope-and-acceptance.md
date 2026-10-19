@@ -178,4 +178,4 @@ last_reviewed: 2026-10-19
 
 - 延伸阅读：[需求与架构交付物](../../reference/architecture-deliverables.md)中的验收标准与需求追踪说明。
 - 返回[本单元目录](00-overview.md)。
-- 下一课：风险与需求交付物（尚未发布，请从[本单元目录](00-overview.md)查看课程状态）。
+- 下一课：[风险与需求交付物](08-risks-and-requirement-deliverables.md)。

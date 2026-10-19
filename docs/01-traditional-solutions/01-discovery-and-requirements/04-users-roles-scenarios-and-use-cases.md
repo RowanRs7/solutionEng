@@ -124,4 +124,4 @@ last_reviewed: 2026-10-16
 
 - 返回[本单元目录](00-overview.md)。
 - 回看[现状调研与业务流程](03-current-state-and-business-process.md)。
-- 下一课文件：`05-functional-and-non-functional-requirements.md`。
+- 下一课：[功能与非功能需求](05-functional-and-non-functional-requirements.md)。

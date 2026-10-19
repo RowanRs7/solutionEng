@@ -160,4 +160,4 @@ last_reviewed: 2026-10-19
 
 - 延伸阅读：[需求与架构交付物](../../reference/architecture-deliverables.md)中的需求包与风险登记表定义。
 - 返回[本单元目录](00-overview.md)。
-- 下一课：优先级、范围与验收标准（课程发布后从[本单元目录](00-overview.md)进入）。
+- 下一课：[优先级、范围与验收标准](07-priorities-scope-and-acceptance.md)。
