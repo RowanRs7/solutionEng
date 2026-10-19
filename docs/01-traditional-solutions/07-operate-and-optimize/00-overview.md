@@ -25,15 +25,15 @@ last_reviewed: 2026-10-19
 
 预计学习时间 **7–9 小时**。课程按以下顺序学习：
 
-1. [01-logs-metrics-tracing-and-alerting.md](01-logs-metrics-tracing-and-alerting.md)：日志、指标、Tracing 与告警。
-2. [02-correlation-id-and-request-tracing.md](02-correlation-id-and-request-tracing.md)：Correlation ID 与请求链路。
-3. [03-opentelemetry-prometheus-grafana.md](03-opentelemetry-prometheus-grafana.md)：OpenTelemetry、Prometheus 与 Grafana。
-4. [04-sli-slo-sla-and-error-budget.md](04-sli-slo-sla-and-error-budget.md)：SLI、SLO、SLA 与错误预算。
-5. [05-performance-capacity-and-cost.md](05-performance-capacity-and-cost.md)：性能、容量、配额与成本。
-6. [06-incident-response-and-postmortem.md](06-incident-response-and-postmortem.md)：故障分级、响应与复盘。
-7. [07-backup-restore-and-business-continuity.md](07-backup-restore-and-business-continuity.md)：备份、恢复与业务连续性。
-8. [08-runbooks-and-operational-handover.md](08-runbooks-and-operational-handover.md)：Runbook 与知识移交。
-9. [09-stage-assessment.md](09-stage-assessment.md)：运行与优化阶段综合测评。
+1. [日志、指标、Tracing 与告警](01-logs-metrics-tracing-and-alerting.md)：三支柱各回答什么问题，告警按什么分级。
+2. [Correlation ID 与请求链路](02-correlation-id-and-request-tracing.md)：一次调用如何被串成一条可回查的链路。
+3. [OpenTelemetry、Prometheus 与 Grafana](03-opentelemetry-prometheus-grafana.md)：从埋点到看板的标准实现路径。
+4. [SLI、SLO、SLA 与错误预算](04-sli-slo-sla-and-error-budget.md)：把稳定性变成可谈判、可告警的数字。
+5. [性能、容量、配额与成本](05-performance-capacity-and-cost.md)：先找瓶颈，再谈扩容与省钱。
+6. [故障分级、响应与复盘](06-incident-response-and-postmortem.md)：定级、止损，再把根因说清楚。
+7. [备份、恢复与业务连续性](07-backup-restore-and-business-continuity.md)：备份存在不等于恢复得了。
+8. [Runbook 与知识移交](08-runbooks-and-operational-handover.md)：值班新人能否不问人就完成止损。
+9. [运行与优化阶段综合测评](09-stage-assessment.md)：检验本单元的掌握程度。
 
 ## 贯穿场景
 

@@ -40,7 +40,7 @@ last_reviewed: 2026-10-19
 
 - 回看上一课：[API Gateway 与服务发现](08-api-gateway-and-service-discovery.md)。
 - 知道请求如何经负载均衡分发到后端实例，以及“健康检查失败就摘除”。
-- 理解事务边界与备份、恢复的基本概念：[索引、事务与数据库迁移](02-indexes-transactions-and-migrations.md)。
+- 理解事务边界与备份、恢复的基本概念：[索引、事务、锁与数据库迁移](02-indexes-transactions-and-migrations.md)。
 - 了解部署单元与多副本：[单体、微服务与无服务器架构](07-monolith-microservices-and-serverless.md)。
 
 ## 业务场景

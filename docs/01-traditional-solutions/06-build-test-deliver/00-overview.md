@@ -25,17 +25,17 @@ last_reviewed: 2026-10-19
 
 预计学习时间 **9–11 小时**。课程按以下顺序学习：
 
-1. [01-fastapi-service-and-layering.md](01-fastapi-service-and-layering.md)：FastAPI 最小服务与项目分层。
-2. [02-dependencies-config-and-secrets.md](02-dependencies-config-and-secrets.md)：依赖、虚拟环境、配置与 Secret。
-3. [03-exception-handling-and-structured-logging.md](03-exception-handling-and-structured-logging.md)：异常处理与结构化日志。
-4. [04-git-branching-and-code-review.md](04-git-branching-and-code-review.md)：Git、版本与代码审查。
-5. [05-test-levels-and-acceptance.md](05-test-levels-and-acceptance.md)：单元、集成、契约、端到端与验收测试。
-6. [06-performance-security-and-data-testing.md](06-performance-security-and-data-testing.md)：性能、安全与数据质量测试。
-7. [07-linux-processes-and-diagnostics.md](07-linux-processes-and-diagnostics.md)：Linux、进程与诊断方法。
-8. [08-docker-and-compose.md](08-docker-and-compose.md)：Docker 与 Docker Compose。
-9. [09-cicd-migrations-canary-and-rollback.md](09-cicd-migrations-canary-and-rollback.md)：CI/CD、变更、灰度与回滚。
-10. [10-cloud-kubernetes-and-iac.md](10-cloud-kubernetes-and-iac.md)：云计算、Kubernetes 与 IaC。
-11. [11-stage-assessment.md](11-stage-assessment.md)：开发、测试与交付阶段综合测评。
+1. [FastAPI 最小服务与项目分层](01-fastapi-service-and-layering.md)：先让服务跑起来，再把目录与职责分开。
+2. [依赖、虚拟环境、配置与 Secret](02-dependencies-config-and-secrets.md)：环境可复现，密钥不进代码与日志。
+3. [异常处理与结构化日志](03-exception-handling-and-structured-logging.md)：让一次失败请求能在日志里被定位。
+4. [Git、版本与代码审查](04-git-branching-and-code-review.md)：改动可追溯、可回滚、可评审。
+5. [单元、集成、契约、端到端与验收测试](05-test-levels-and-acceptance.md)：每一层测什么，测到什么程度算验收。
+6. [性能、安全与数据质量测试](06-performance-security-and-data-testing.md)：把非功能要求变成发布前的闸门。
+7. [Linux、进程与诊断方法](07-linux-processes-and-diagnostics.md)：线上排障的第一手工具与观察顺序。
+8. [Docker 与 Docker Compose](08-docker-and-compose.md)：把运行环境打进镜像，在本地复现依赖。
+9. [CI/CD、变更、灰度与回滚](09-cicd-migrations-canary-and-rollback.md)：让每次发布都能安全撤回。
+10. [云计算、Kubernetes 与 IaC](10-cloud-kubernetes-and-iac.md)：让环境随时可以重建。
+11. [开发、测试与交付阶段综合测评](11-stage-assessment.md)：检验本单元的掌握程度。
 
 ## 贯穿场景
 

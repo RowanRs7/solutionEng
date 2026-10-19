@@ -25,17 +25,17 @@ last_reviewed: 2026-10-19
 
 预计学习时间为 **8–10 小时**。课程按顺序推进，每课先读完正文、完成练习，再进入下一课：
 
-1. `01-authentication-authorization-and-audit.md`：认证、授权与审计，分清三者的职责边界。
-2. `02-passwords-mfa-session-and-apikeys.md`：密码、MFA、Session 与 API Key 的存储与生命周期。
-3. `03-jwt-structure-and-validation.md`：JWT 结构、签发与校验，识别常见校验漏洞。
-4. `04-oauth2-flows-and-pkce.md`：OAuth 2.0 授权流程与 PKCE，按客户端类型选流程。
-5. `05-openid-connect-and-id-tokens.md`：OpenID Connect 与身份令牌，把认证叠加到 OAuth 之上。
-6. `06-sso-saml-and-enterprise-identity.md`：SSO、SAML 与企业身份接入，对接客户方 IdP。
-7. `07-rbac-abac-and-multi-tenant-permissions.md`：RBAC、ABAC 与多租户权限，设计可扩展的授权模型。
-8. `08-secrets-and-key-management.md`：Secret、证书与密钥管理，落地轮换与最小暴露。
-9. `09-web-api-attacks-and-secure-design.md`：常见 Web/API 攻击与对应的安全设计对策。
-10. `10-data-classification-encryption-and-compliance.md`：数据分类、脱敏与合规基础，界定可存、可传、可展示。
-11. `11-stage-assessment.md`：身份与安全阶段综合测评。
+1. [认证、授权与审计](01-authentication-authorization-and-audit.md)：认证、授权与审计，分清三者的职责边界。
+2. [密码、MFA、Session 与 API Key](02-passwords-mfa-session-and-apikeys.md)：密码、MFA、Session 与 API Key 的存储与生命周期。
+3. [JWT 结构、签发与校验](03-jwt-structure-and-validation.md)：JWT 结构、签发与校验，识别常见校验漏洞。
+4. [OAuth 2.0 授权流程与 PKCE](04-oauth2-flows-and-pkce.md)：OAuth 2.0 授权流程与 PKCE，按客户端类型选流程。
+5. [OpenID Connect 与身份令牌](05-openid-connect-and-id-tokens.md)：OpenID Connect 与身份令牌，把认证叠加到 OAuth 之上。
+6. [SSO、SAML 与企业身份接入](06-sso-saml-and-enterprise-identity.md)：SSO、SAML 与企业身份接入，对接客户方 IdP。
+7. [RBAC、ABAC 与多租户权限](07-rbac-abac-and-multi-tenant-permissions.md)：RBAC、ABAC 与多租户权限，设计可扩展的授权模型。
+8. [Secret、证书与密钥管理](08-secrets-and-key-management.md)：Secret、证书与密钥管理，落地轮换与最小暴露。
+9. [常见 Web/API 攻击与安全设计](09-web-api-attacks-and-secure-design.md)：常见 Web/API 攻击与对应的安全设计对策。
+10. [数据分类、脱敏与合规基础](10-data-classification-encryption-and-compliance.md)：数据分类、脱敏与合规基础，界定可存、可传、可展示。
+11. [身份与安全阶段综合测评](11-stage-assessment.md)：身份与安全阶段综合测评。
 
 ## 贯穿场景
 

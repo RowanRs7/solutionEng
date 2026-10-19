@@ -2,7 +2,7 @@
 
 > **For agentic workers:** Execute this plan unit by unit. Tasks 1–6 are independent and may run in parallel once Task 0 is complete. Each task fans out one writing subagent per lesson, then one for the unit overview and one for the stage assessment.
 
-**Goal:** Publish the six remaining traditional-solutions units (59 core lessons, 6 unit overviews, 6 stage assessments) to the standard set by the discovery unit.
+**Goal:** Publish the six remaining traditional-solutions units (60 core lessons, 6 unit overviews, 6 stage assessments) to the standard set by the discovery unit.
 
 **Architecture:** Markdown remains the product. Every lesson is generated from `docs/_templates/lesson-template.md` against the spec's bullet list, then gated by `scripts/validate_docs.py`. Shared navigation files are updated once, in Task 7, so parallel writers never touch the same file.
 
@@ -246,7 +246,7 @@ Style rules (from spec §8–§9): `**bold**` for conclusions, `*italics*` for f
 
 **Files:** the six shared files in the File Map.
 
-**Interfaces:** consumes all 71 new files; produces a navigable course with no planned-link gaps.
+**Interfaces:** consumes all 72 new files; produces a navigable course with no planned-link gaps.
 
 - [ ] **Step 1:** Update `docs/01-traditional-solutions/00-overview.md` so all seven units are clickable and the route matches the published order.
 - [ ] **Step 2:** Update `docs/00-start-here/04-knowledge-map.md`; move the six units under 已发布, keep only genuinely unpublished AI units under 计划中.

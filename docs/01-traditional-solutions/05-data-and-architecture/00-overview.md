@@ -25,17 +25,17 @@ last_reviewed: 2026-10-19
 
 预计学习时间 **8–10 小时**。课程按以下顺序学习：
 
-1. [01-sql-tables-and-relationships.md](01-sql-tables-and-relationships.md)：SQL、表设计与数据关系。
-2. [02-indexes-transactions-and-migrations.md](02-indexes-transactions-and-migrations.md)：索引、事务、锁与数据库迁移。
-3. [03-nosql-redis-and-caching.md](03-nosql-redis-and-caching.md)：NoSQL、Redis 与缓存失效。
-4. [04-object-storage-and-file-management.md](04-object-storage-and-file-management.md)：对象存储与文件管理。
-5. [05-time-money-uuid-and-encoding.md](05-time-money-uuid-and-encoding.md)：时间、金额、UUID 与编码陷阱。
-6. [06-data-quality-and-consistency.md](06-data-quality-and-consistency.md)：数据质量、校验与一致性。
-7. [07-monolith-microservices-and-serverless.md](07-monolith-microservices-and-serverless.md)：单体、微服务与无服务器架构。
-8. [08-api-gateway-and-service-discovery.md](08-api-gateway-and-service-discovery.md)：API Gateway 与服务发现。
-9. [09-high-availability-and-disaster-recovery.md](09-high-availability-and-disaster-recovery.md)：高可用、容错与灾难恢复。
-10. [10-architecture-tradeoffs-and-adr.md](10-architecture-tradeoffs-and-adr.md)：架构权衡、ADR 与容量成本。
-11. [11-stage-assessment.md](11-stage-assessment.md)：数据与架构阶段综合测评。
+1. [SQL、表设计与数据关系](01-sql-tables-and-relationships.md)：从主键、外键与范式开始，把数据模型定稳。
+2. [索引、事务、锁与数据库迁移](02-indexes-transactions-and-migrations.md)：读懂执行计划，算清读、写与变更的账。
+3. [NoSQL、Redis 与缓存失效](03-nosql-redis-and-caching.md)：选对存储形态，管住缓存穿透与雪崩。
+4. [对象存储与文件管理](04-object-storage-and-file-management.md)：大文件放哪里，权限与签名怎么给。
+5. [时间、金额、UUID 与编码陷阱](05-time-money-uuid-and-encoding.md)：不让精度、时区与主键生成出错。
+6. [数据质量、校验与一致性](06-data-quality-and-consistency.md)：把三类数据问题变成可检查的规则。
+7. [单体、微服务与无服务器架构](07-monolith-microservices-and-serverless.md)：先判断该不该拆，再谈怎么拆。
+8. [API Gateway 与服务发现](08-api-gateway-and-service-discovery.md)：入口统一鉴权限流，服务之间找得到彼此。
+9. [高可用、容错与灾难恢复](09-high-availability-and-disaster-recovery.md)：用冗余与演练把 RTO、RPO 变成承诺。
+10. [架构权衡、ADR 与容量成本](10-architecture-tradeoffs-and-adr.md)：把取舍写成可评审、可追溯的决定。
+11. [数据与架构阶段综合测评](11-stage-assessment.md)：检验本单元的掌握程度。
 
 ## 贯穿场景
 

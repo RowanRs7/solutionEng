@@ -218,8 +218,10 @@ print(f"mode={'atomic' if ATOMIC else 'naive'} 扣款次数={count} 重放返回
 $ python3 dedupe.py
 mode=atomic 扣款次数=1 重放返回={'refund_id': 'rf_1', 'amount': 199}
 $ python3 dedupe.py naive
-mode=naive 扣款次数=2 重放返回={'refund_id': 'rf_2', 'amount': 199}
+mode=naive 扣款次数=2 重放返回={'refund_id': 'rf_1' 或 'rf_2', 'amount': 199}
 ```
+
+说明：naive 模式下两个线程都会写结果，末次写入胜出，`refund_id` 的编号随调度顺序可能变化（`rf_1` 或 `rf_2` 都正常）；这一组只核对扣款次数 = 2 与重放不再新扣款，编号本身不是断言对象。
 
 整体分三段：`decide()` 只描述“记录该怎么判”，`_claim()` 决定加不加锁，`refund()` 只在拿到 `new` 时扣款。真实系统里锁由唯一索引或事务替代；<u>“判断与写入必须原子”这条不变</u>。
 

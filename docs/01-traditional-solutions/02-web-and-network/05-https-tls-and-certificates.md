@@ -21,7 +21,7 @@ last_reviewed: 2026-10-19
 
 晴空商城的对外入口各自出过事：顾客登录的 Cookie 在明文 HTTP 下能被同一网络里的中间人读取；支付方回调因证书过期中断三小时；客服后台的图片仍是 `http://`，被浏览器当作混合内容拦截。开发同学的第一反应常是"加个锁、点掉警告"，代价却是把整条链路退化成可以被任意替换的明文通道。
 
-> **核心结论：** HTTPS 不是给页面加一把装饰性的锁，而是用证书证明"我连上的确实是 `api.skymall.example`"，再用握手协商出的会话密钥保护这段通信的机密性与完整性。
+> **核心结论：** HTTPS 不是给页面加一把装饰性的锁，而是用证书证明"我连上的确实是 `api.qingkong.example`"，再用握手协商出的会话密钥保护这段通信的机密性与完整性。
 
 ## 学习目标
 
@@ -43,10 +43,10 @@ last_reviewed: 2026-10-19
 
 晴空商城有四个对外入口，它们对 TLS 的要求并不相同：
 
-- `shop.skymall.example` 走 CDN，证书由 CDN 供应商托管。
-- 支付方回调 `https://api.skymall.example/pay/notify` 要求源站能独立接受公网 HTTPS 请求。
-- 客服后台 `admin.skymall.example` 由外包团队维护，员工在家办公后不再有内网边界。
-- 仓库 WMS 的 `wms.skymall.example` 接口里带收件人地址和电话。
+- `shop.qingkong.example` 走 CDN，证书由 CDN 供应商托管。
+- 支付方回调 `https://api.qingkong.example/pay/notify` 要求源站能独立接受公网 HTTPS 请求。
+- 客服后台 `admin.qingkong.example` 由外包团队维护，员工在家办公后不再有内网边界。
+- 仓库 WMS 的 `wms.qingkong.example` 接口里带收件人地址和电话。
 
 约束具体到可检查：支付方合同要求 TLS 1.2 及以上、不接受自签证书；证书由谁续期、过期后谁先知道，都没写进 Runbook；去年一次过期让支付回调中断 3 小时，退款积压 400 单。
 
@@ -57,12 +57,12 @@ last_reviewed: 2026-10-19
 | 概念 | 本课程中的含义 | 晴空商城示例 |
 | --- | --- | --- |
 | *TLS* | 在 TCP 之上提供机密性、完整性和身份认证的协议 | 所有 `https://` 入口的底层协议 |
-| *HTTPS* | 把 HTTP 报文放进 TLS 连接里传输，默认端口 443 | `shop.skymall.example` |
-| *证书* | CA 签名的 X.509 文件，把域名和公钥绑定在一起 | `api.skymall.example` 的叶证书 |
+| *HTTPS* | 把 HTTP 报文放进 TLS 连接里传输，默认端口 443 | `shop.qingkong.example` |
+| *证书* | CA 签名的 X.509 文件，把域名和公钥绑定在一起 | `api.qingkong.example` 的叶证书 |
 | *CA* | 证书颁发机构，验证申请者身份并用私钥签发证书 | 支付方只接受公共 CA 签发的证书 |
 | *证书链* | 叶证书 → 中间证书 → 根证书的签名序列 | 漏发中间证书时的典型故障 |
 | *信任库* | 操作系统或运行时预置的可信根证书集合 | 运维电脑与容器镜像各有一套 |
-| *SAN* | 主体备用名称，列出证书有效的域名或 IP | 证书里必须含 `api.skymall.example` |
+| *SAN* | 主体备用名称，列出证书有效的域名或 IP | 证书里必须含 `api.qingkong.example` |
 | *私钥* | 只留在服务端或密钥服务里，用于握手签名 | 泄露即代表站点身份可被冒用 |
 | *HSTS* | 让浏览器今后只走 HTTPS 的响应头 | 防止回落到 `http://` |
 
@@ -231,13 +231,13 @@ C 域名不匹配 FAIL 62 Hostname mismatch, certificate is not valid for 'local
 
 ## 动手实验
 
-任务：为 `api.skymall.example` 产出一份可执行的证书体检清单，并在本地离线复现两类拒绝。
+任务：为 `api.qingkong.example` 产出一份可执行的证书体检清单，并在本地离线复现两类拒绝。
 
 前置条件：`python3.8+`、`openssl`、`curl`；步骤 1–3 离线即可完成，只有检查真实域名时需要网络。
 
 1. 新建工作目录，用最小示例里的 `openssl req` 命令生成 1 天有效期的自签证书。
 2. 把 `tls_check.py` 保存到同一目录并运行，确认输出与预期三行一致。
-3. 先预测、再验证：把第三个探测的 `hostname` 改成 `api.skymall.example`，运行后观察是否仍然失败。
+3. 先预测、再验证：把第三个探测的 `hostname` 改成 `api.qingkong.example`，运行后观察是否仍然失败。
 4. 有网络时检查真实站点的链是否完整：
 
    ```bash
@@ -263,7 +263,7 @@ C 域名不匹配 FAIL 62 Hostname mismatch, certificate is not valid for 'local
    | 有效期 | 比较 `notAfter` 与当前时间 | 剩余天数大于续期窗口 |
    | 协议版本 | 看 `Protocol` 行 | TLS 1.2 及以上 |
 
-预期结果：步骤 2 输出"一次成功、两次失败"；步骤 3 仍然失败，因为自签证书的 SAN 里没有 `api.skymall.example`；步骤 4 的 `Verify return code` 为 0。
+预期结果：步骤 2 输出"一次成功、两次失败"；步骤 3 仍然失败，因为自签证书的 SAN 里没有 `api.qingkong.example`；步骤 4 的 `Verify return code` 为 0。
 
 验证方法：三个探测的错误码分别为 18、0、62；步骤 4 若出现 `unable to verify the first certificate` 或 `depth` 层数不足，说明链不完整。清理：删除 `key.pem`、`cert.pem`、`tls_check.py`，并用 `lsof -nP -iTCP:9443 -sTCP:LISTEN` 确认端口已释放。
 
@@ -280,7 +280,7 @@ C 域名不匹配 FAIL 62 Hostname mismatch, certificate is not valid for 'local
 
 ## 安全与生产注意事项
 
-**<u>证书私钥泄露等同于站点身份被完全冒用。</u>** 拿到私钥的人能伪装成 `api.skymall.example` 与支付方通信。缓解：私钥只放在密钥管理服务或 HSM 中，权限 `600`，禁止进 Git 与构建日志，并预备吊销与轮换。
+**<u>证书私钥泄露等同于站点身份被完全冒用。</u>** 拿到私钥的人能伪装成 `api.qingkong.example` 与支付方通信。缓解：私钥只放在密钥管理服务或 HSM 中，权限 `600`，禁止进 Git 与构建日志，并预备吊销与轮换。
 
 **<u>为了让报错消失而关闭证书校验，会把 HTTPS 退化成可被中间人篡改的通道。</u>** 常见形式是 `verify=False`、`curl -k`、`NODE_TLS_REJECT_UNAUTHORIZED=0`；攻击者可以替换任意响应内容，调用方毫无察觉。
 
@@ -296,7 +296,7 @@ C 域名不匹配 FAIL 62 Hostname mismatch, certificate is not valid for 'local
 
 ## 思考题
 
-晴空商城把 `shop.skymall.example` 的 TLS 终止在 CDN，但源站 `origin.skymall.example` 仍可从公网直达，支付回调也直接打到源站。请分析：是否应在源站再启用 TLS，甚至加上 mTLS？请从"谁能看到明文""证书由谁续期""失效时如何发现"三个角度给出判断，并说明方案会新增哪些运维成本。
+晴空商城把 `shop.qingkong.example` 的 TLS 终止在 CDN，但源站 `origin.qingkong.example` 仍可从公网直达，支付回调也直接打到源站。请分析：是否应在源站再启用 TLS，甚至加上 mTLS？请从"谁能看到明文""证书由谁续期""失效时如何发现"三个角度给出判断，并说明方案会新增哪些运维成本。
 
 参考思路：先画信任边界，而不是先选技术。源站可从公网直达时，CDN 上的证书与 WAF 都能被绕过，源站启用 TLS 是必要的；若调用方只有 CDN 和支付方，mTLS 能缩小攻击面，但引入客户端证书的分发、轮换与吊销成本。可比较"源站只允许 CDN 网段""支付回调单独端到端 TLS""全量 mTLS"三种方案，并明确谁负责续期。
 
@@ -307,7 +307,7 @@ C 域名不匹配 FAIL 62 Hostname mismatch, certificate is not valid for 'local
 2. 握手完成后，HTTP 报文用哪种密钥加密？  
    A. 服务端私钥　B. 客户端私钥　C. 本次握手协商出的对称会话密钥　D. 根证书中的公钥
 3. 客户端验证服务端证书时，至少要检查哪三件事？
-4. 通配符证书 `*.skymall.example` 能否覆盖 `api.staging.skymall.example`？为什么？
+4. 通配符证书 `*.qingkong.example` 能否覆盖 `api.staging.qingkong.example`？为什么？
 5. 场景题：值班同学把客户端改成 `verify=False` 绕过证书报错后接口通了，并提交上线。你应该如何评估和处理？
 
 ## 答案与解析
@@ -315,7 +315,7 @@ C 域名不匹配 FAIL 62 Hostname mismatch, certificate is not valid for 'local
 1. **B。**证书把域名与公钥绑定并由 CA 签名。A 绝不能放进证书；C 在握手时才临时协商；D 与证书无关。
 2. **C。**非对称运算只用于身份验证和密钥协商，之后用对称密钥加密，因为后者快得多。A、B 都不用于加密应用数据；D 只是信任锚里的公钥，从不参与会话加密。
 3. 建链（追溯到信任库中的根证书）、逐级验签、查有效期、查主机名是否在 SAN 中、查 EKU 用途，并尽量查吊销。少做任何一项，都可能让"看起来正常的连接"被接受。
-4. **不能。**通配符只匹配一级子域：`*.skymall.example` 覆盖 `api.skymall.example`，不覆盖 `api.staging.skymall.example`。
+4. **不能。**通配符只匹配一级子域：`*.qingkong.example` 覆盖 `api.qingkong.example`，不覆盖 `api.staging.qingkong.example`。
 5. **不能接受上线。**`verify=False` 关闭了身份验证，攻击者可以替换支付接口的响应，等于把资金相关调用交给中间人。正确做法是查明缺中间证书、域名不匹配还是过期；确需自签证书时，应把对应 CA 显式加入信任库，并检查同类改动是否已扩散。
 
 ### 动手实验参考
