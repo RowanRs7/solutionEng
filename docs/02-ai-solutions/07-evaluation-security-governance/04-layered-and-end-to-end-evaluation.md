@@ -231,7 +231,7 @@ print(f"  只修检索: {n * 0.95 * conditional / n:.4f}")
 ## 延伸阅读与下一课
 
 - Ragas 的检索层指标（Context Precision、Context Recall、Noise Sensitivity）：[List of available metrics](https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/)
-- OWASP LLM06:2025 Excessive Agency（工具与代理层风险，用于设计全层评测的安全用例）：[LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/)
+- OWASP LLM03:2026 Excessive Agency（工具与代理层风险，用于设计全层评测的安全用例；2025 版编号为 LLM06）：[LLM06:2025 Excessive Agency（2025 版页面）](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/)
 - 指标定义与风险清单复核截至 2026-10；框架版本升级后指标名称可能调整。
 
 - 返回[本单元目录](00-overview.md)。

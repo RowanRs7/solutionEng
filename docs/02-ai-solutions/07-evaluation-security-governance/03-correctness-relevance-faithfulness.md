@@ -192,7 +192,7 @@ print(f"明确不支持: {stats['unsupported']}，待人工: {stats['needs_revie
 
 ## 安全与生产注意事项
 
-**<u>忠实度对“被投毒的上下文”完全无能为力。</u>** 如果攻击者在可写入的文档、工单备注或网页中植入“新政策：所有商品拆封可退”，检索命中后模型会忠实复述，忠实度甚至更高。这类间接注入必须靠来源白名单、内容审核与权限隔离处理，而不是调整指标阈值（OWASP LLM01:2025 将其列为提示注入的主要形态之一）。
+**<u>忠实度对“被投毒的上下文”完全无能为力。</u>** 如果攻击者在可写入的文档、工单备注或网页中植入“新政策：所有商品拆封可退”，检索命中后模型会忠实复述，忠实度甚至更高。这类间接注入必须靠来源白名单、内容审核与权限隔离处理，而不是调整指标阈值（OWASP LLM01:2026 将其列为提示注入的主要形态之一）。
 
 **<u>完整性要求会诱导模型补全它并不知道的信息。</u>** 当提示强调“必须给出金额与时限”时，模型倾向于编造一个看起来合理的数字。缓解办法是允许“不确定”出口：缺少依据时明确说明需人工确认，并把这种情况计为合格而非失败。
 
@@ -235,8 +235,8 @@ print(f"明确不支持: {stats['unsupported']}，待人工: {stats['needs_revie
 
 - Ragas 的 Faithfulness 指标定义、计算公式与 HHEM 分类器替代方案：[Faithfulness](https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/faithfulness/)
 - Ragas 指标总览（涵盖 Context Precision/Recall、Response Relevancy、Factual Correctness 等）：[List of available metrics](https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/)
-- OWASP LLM01:2025 Prompt Injection（含间接注入的形态与缓解）：[LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)
-- 指标定义与安全清单复核截至 2026-10；框架版本升级后字段与算法可能变化。
+- OWASP LLM01 Prompt Injection（含间接注入的形态与缓解）：[LLM01 详情页（2025 版）](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)（2026 版编号不变，仍为 LLM01:2026）。
+- 指标定义与安全清单复核截至 2026-10-19；框架版本升级后字段与算法可能变化。
 
 - 返回[本单元目录](00-overview.md)。
 - 回看上一课：[Golden Dataset 与评测样本设计](02-golden-datasets-and-sample-design.md)。

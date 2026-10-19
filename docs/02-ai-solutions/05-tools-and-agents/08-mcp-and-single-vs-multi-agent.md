@@ -29,7 +29,7 @@ last_reviewed: 2026-10-19
 
 完成本课后，你能够：
 
-- 画出一次 MCP 交互的报文序列：初始化、工具列举、工具调用、结果返回。
+- 画出一次 MCP 交互的报文序列：版本协商（`server/discover`）、工具列举、工具调用、结果返回。
 - 判断一个集成场景该用 MCP 服务器、应用内函数还是保留人工操作。
 - 用三个维度评估多 Agent 方案是否值得，并说明替代方案。
 - 指出接入第三方 MCP 服务器时的信任边界与叠加风险。
@@ -57,7 +57,7 @@ last_reviewed: 2026-10-19
 | *资源*（resources） | 供模型或用户读取的上下文数据 | 售后政策文档 |
 | *提示*（prompts） | 可复用的模板化消息或工作流 | “标准退款话术”模板 |
 | *工具*（tools） | 模型可请求执行的函数 | `get_order`、`create_refund` |
-| *能力协商* | 初始化时双方声明支持的特性 | 服务器声明 `tools.listChanged` |
+| *能力协商* | 每个请求在 `_meta` 声明版本与客户端能力，服务器用 `server/discover` 声明版本与能力 | 服务器返回 `supportedVersions` 与 `tools.listChanged` |
 
 协议明确规定：工具是 model-controlled 的，模型可以发现并调用；但实现方**应当**始终保留人的否决能力。MCP 规范也点明，除非服务器可信，工具的行为描述与注解都应视为不可信。
 
@@ -73,14 +73,26 @@ last_reviewed: 2026-10-19
 
 ## 工作原理
 
-一次 MCP 交互的生命周期：
+本课按 **2026-07-28** 版规范讲解，该版本已是 MCP 官网的当前版本（复核日期 2026-10-19）。它取消了 `initialize`/`notifications/initialized` 握手与协议层会话，改为每个请求自带版本与能力。一次交互的生命周期：
 
-1. **建立连接。** host 按配置启动或连接服务器。本地常用标准输入输出（stdio）传输，远程常用可流式 HTTP 传输。
-2. **初始化与协商。** client 发送 `initialize`，声明协议版本与能力；服务器返回自己的版本、能力与身份。版本不匹配时按规范回退或断开。
-3. **确认就绪。** client 发送 `notifications/initialized` 通知，此消息无需响应。
-4. **发现工具。** client 调用 `tools/list`，拿到工具名、描述与 `inputSchema`。服务器支持变更通知时，工具增删会主动告知。
-5. **调用工具。** 模型决定调用后，host 把请求转成 `tools/call`，带工具名与参数。服务器执行并返回 `content`（文本、图片、资源链接等），出错时返回错误对象。
+1. **建立连接。** host 按配置启动或连接服务器。本地常用标准输入输出（stdio）传输，远程常用可流式 HTTP（Streamable HTTP）传输。
+2. **版本与服务发现。** 服务器**必须**实现 `server/discover`：客户端可以用它一次拿到服务器支持的 `supportedVersions`、能力与 `serverInfo`；也可以跳过它直接发请求，遇到版本错误再按返回的版本重试。
+3. **每个请求自带元信息。** 没有握手，也没有会话：每个请求都在 `_meta` 里带 `io.modelcontextprotocol/protocolVersion`、`clientInfo`、`clientCapabilities`。服务器逐请求判定，版本不支持时返回 `UnsupportedProtocolVersionError`（错误码 `-32022`），并在 `data.supported` 里列出它支持的版本。
+4. **发现工具。** client 调用 `tools/list`，拿到工具名、描述与 `inputSchema`。列表结果不再绑定到某条连接，因此需要变更通知时要显式订阅（见第 7 步）；结果还带 `ttlMs`/`cacheScope` 两个缓存提示字段。
+5. **调用工具。** 模型决定调用后，host 把请求转成 `tools/call`，带工具名与参数。服务器执行并返回 `content`（文本、图片、资源链接等）与必需的 `resultType` 字段（普通结果为 `"complete"`），出错时返回错误对象。
 6. **结果回填。** host 把结果转成模型可读的消息，继续推理。审计与权限控制都发生在 host 这一侧。
+7. **订阅变更（可选）。** 需要感知工具或资源变化时，client 发一次 `subscriptions/listen`，用 `notifications` 过滤器声明要哪些事件（`toolsListChanged`、`promptsListChanged`、`resourcesListChanged`、`resourceSubscriptions`）。服务器先回 `notifications/subscriptions/acknowledged`，并在 `_meta` 里带 `subscriptionId`；此后只推客户端订阅过的类型。
+
+### 版本差异：2025-06-18 → 2026-07-28
+
+| 维度 | 2025-06-18（握手版） | 2026-07-28（当前版） |
+| --- | --- | --- |
+| 握手 | 先发 `initialize` 交换版本与能力，再发 `notifications/initialized` 表示就绪 | 取消握手：每个请求在 `_meta` 里带 `protocolVersion`、`clientInfo`、`clientCapabilities` |
+| 会话 | Streamable HTTP 用 `Mcp-Session-Id` 头维持连接级状态 | 取消协议层会话：列表结果不再随连接变化，需要跨调用状态时由服务器发放显式 handle，作为普通工具参数传递 |
+| 版本协商 | 在 `initialize` 里报 `protocolVersion`，不匹配则回退或断开 | 逐请求判定；可先调 `server/discover` 选版本，不匹配返回 `UnsupportedProtocolVersionError`（`-32022`） |
+| 资源订阅 | `resources/subscribe` 按 URI 逐条订阅，配合 HTTP GET 长连接推 `notifications/resources/updated` | `subscriptions/listen` 单条长驻流，按事件类型批量订阅，用 `notifications/subscriptions/acknowledged` 确认 |
+
+规范把 2026-07-28 及以后称为 modern、把 `2025-11-25` 及更早的握手版称为 legacy，同时支持两代的是 dual-era 实现；升级时按“向后兼容”章节处理，而不是假设对端一定是新版。
 
 多 Agent 的运行机制则是把第 5 步变成“调用另一个 agent”。差别在于被调用方有自己的上下文与决策权：编排者给出子任务，工作者返回结论，中间过程对编排者不可见。这种*上下文隔离*既是优点（减少干扰）也是缺点（编排者无法判断结论怎么来的）。
 
@@ -104,23 +116,40 @@ last_reviewed: 2026-10-19
 ```python
 import json
 
-# 1) 客户端发出的报文：注意通知消息没有 id，也不期待响应
+# 1) 2026-07-28 起没有握手：每个请求都在 _meta 里自带版本、身份与能力
+META = {
+    "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+    "io.modelcontextprotocol/clientInfo": {"name": "after-sales-agent", "version": "0.1.0"},
+    "io.modelcontextprotocol/clientCapabilities": {},
+}
+
 REQUESTS = [
-    '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"after-sales-agent","version":"0.1.0"}}}',
-    '{"jsonrpc":"2.0","method":"notifications/initialized"}',
-    '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}',
-    '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"get_order","arguments":{"order_id":"SO-2026-0001"}}}',
+    json.dumps({"jsonrpc": "2.0", "id": 1, "method": "server/discover",
+                "params": {"_meta": META}}),
+    json.dumps({"jsonrpc": "2.0", "id": 2, "method": "tools/list",
+                "params": {"_meta": META}}),
+    json.dumps({"jsonrpc": "2.0", "id": 3, "method": "tools/call",
+                "params": {"_meta": META, "name": "get_order",
+                           "arguments": {"order_id": "SO-2026-0001"}}}),
+    # 取消通知没有 id，也不期待响应
+    json.dumps({"jsonrpc": "2.0", "method": "notifications/cancelled",
+                "params": {"requestId": 3, "reason": "timeout"}}),
 ]
 
 # 2) 服务器的响应（真实环境由服务器返回，此处固定用于演示）
 RESPONSES = [
-    {"jsonrpc": "2.0", "id": 1, "result": {"protocolVersion": "2025-06-18",
+    {"jsonrpc": "2.0", "id": 1, "result": {"resultType": "complete",
+     "supportedVersions": ["2026-07-28"],
      "capabilities": {"tools": {"listChanged": True}},
-     "serverInfo": {"name": "after-sales-tools", "version": "1.2.0"}}},
-    {"jsonrpc": "2.0", "id": 2, "result": {"tools": [{"name": "get_order",
-     "description": "按订单号查询状态", "inputSchema": {"type": "object",
+     "ttlMs": 3600000, "cacheScope": "public",
+     "_meta": {"io.modelcontextprotocol/serverInfo": {"name": "after-sales-tools",
+                                                     "version": "1.2.0"}}}},
+    {"jsonrpc": "2.0", "id": 2, "result": {"resultType": "complete",
+     "ttlMs": 60000, "cacheScope": "private",
+     "tools": [{"name": "get_order", "description": "按订单号查询状态", "inputSchema": {"type": "object",
      "properties": {"order_id": {"type": "string"}}, "required": ["order_id"]}}]}},
-    {"jsonrpc": "2.0", "id": 99, "result": {"content": [{"type": "text",
+    {"jsonrpc": "2.0", "id": 99, "result": {"resultType": "complete",
+     "content": [{"type": "text",
      "text": "{\"status\":\"delivered\"}"}]}},
 ]
 
@@ -151,14 +180,14 @@ print("仍未响应:", pending)                # 6) 未响应的请求必须触�
 预期输出：
 
 ```text
-通知 notifications/initialized: 无需响应
-响应 id=1 配对 initialize
+通知 notifications/cancelled: 无需响应
+响应 id=1 配对 server/discover
 响应 id=2 配对 tools/list
 响应 id=99 无对应请求 -> 丢弃（可能是超时后的迟到响应）
 仍未响应: {3: 'tools/call'}
 ```
 
-现实读法：`tools/call` 没有响应就是一次悬空调用，必须由 host 超时、重试或转人工；`id=99` 的迟到响应不能因为“形状对”就被塞进上下文，否则模型会把旧结果当新结果。
+现实读法：`notifications/cancelled` 只是“请对方别做了”的尽力通知，它不产生响应，也不能把请求从 `pending` 里清掉；`tools/call` 没有响应就是一次悬空调用，必须由 host 超时、重试或转人工。`id=99` 的迟到响应不能因为“形状对”就被塞进上下文，否则模型会把旧结果当新结果。
 
 ## 动手实验
 
@@ -181,9 +210,9 @@ print("仍未响应:", pending)                # 6) 未响应的请求必须触�
 
 | 现象 | 可能原因 | 验证方法 | 修复方向 |
 | --- | --- | --- | --- |
-| 工具列表为空 | 服务器未声明 `tools` 能力，或初始化未完成 | 抓 `initialize` 与 `tools/list` 报文 | 补能力协商，确认通知已发送 |
-| 调用后长时间无响应 | 传输层卡住，host 未设超时 | 检查连接日志与超时配置 | 单次调用超时 + 取消通知 + 转人工 |
-| 模型调用不存在的工具 | 工具已下线但 host 缓存未刷新 | 对比 `tools/list` 与请求中的工具名 | 订阅变更通知，缓存带版本号 |
+| 工具列表为空 | 服务器未声明 `tools` 能力，或 `_meta` 里的版本/能力没带上、版本不被支持 | 抓 `server/discover` 与 `tools/list` 报文，看 `_meta` 与错误码 `-32022` | 在 `_meta` 补齐 `protocolVersion` 与 `clientCapabilities`，按 `supportedVersions` 重试 |
+| 调用后长时间无响应 | 传输层卡住，host 未设超时 | 检查连接日志与超时配置 | 单次调用超时 + 发 `notifications/cancelled` + 转人工 |
+| 模型调用不存在的工具 | 工具已下线但 host 缓存未刷新 | 对比 `tools/list` 与请求中的工具名 | 用 `subscriptions/listen` 订阅 `toolsListChanged`，缓存带版本号与 `ttlMs` |
 | 第三方工具行为异常 | 服务器描述与实际行为不一致 | 用只读数据做验证调用 | 引入服务器白名单与行为测试 |
 | 多 Agent 结论互相矛盾 | 无共享事实源，各角色各自推断 | 对比各角色输入与结论 | 关键事实由确定性服务提供，角色只做表达 |
 
@@ -196,7 +225,7 @@ print("仍未响应:", pending)                # 6) 未响应的请求必须触�
 ## 本课总结
 
 - **MCP 标准化的是工具与上下文的暴露方式**，不改变权限、审批与终止责任——这些仍在 host 侧。
-- JSON-RPC 的 `id` 配对、通知无响应、错误对象三类语义是排障的基础。
+- JSON-RPC 的 `id` 配对、通知无响应、错误对象三类语义是排障的基础；2026-07-28 版取消握手与会话，版本与能力改为随每个请求的 `_meta` 传递。
 - 单 Agent 在工具数量可控时更便宜、更好调；工具变多先做分组路由。
 - 多 Agent 的价值来自上下文隔离与差异化权限，代价是成本、延迟与错误传播。
 - 第三方服务器与跨角色调用是两个独立的信任边界，都要单独设计控制。
@@ -211,7 +240,7 @@ print("仍未响应:", pending)                # 6) 未响应的请求必须触�
 
 1. MCP 中 host、client、server 的职责分别是什么？
 2. 下列哪类报文不需要响应？  
-   A. `initialize`　B. `tools/list`　C. `notifications/initialized`　D. `tools/call`
+   A. `server/discover`　B. `tools/list`　C. `notifications/cancelled`　D. `tools/call`
 3. 为什么说“接入第三方 MCP 服务器”会把信任边界外移？
 4. 单 Agent 工具数量过多时，为什么优先做路由而不是直接拆多 Agent？
 5. 场景题：为提升专业性，团队把售后拆成五个 agent，成本涨 4 倍且错误率上升。请给出诊断顺序。
@@ -226,8 +255,11 @@ print("仍未响应:", pending)                # 6) 未响应的请求必须触�
 
 ## 延伸阅读与下一课
 
-- Model Context Protocol：[Specification 2025-06-18](https://modelcontextprotocol.io/specification/2025-06-18)（host/client/server、JSON-RPC、资源/提示/工具、安全与用户同意原则；截至 2026-10-19 复核）。
-- Model Context Protocol：[Tools（2025-06-18）](https://modelcontextprotocol.io/specification/2025-06-18/server/tools)（`tools/list`、`tools/call`、`inputSchema`/`outputSchema`、结构化内容与错误处理）。
+- Model Context Protocol：[Specification 2026-07-28](https://modelcontextprotocol.io/specification/2026-07-28/changelog)（当前版本的关键变更：取消握手与会话、`server/discover`、`subscriptions/listen`；复核日期 2026-10-19）。
+- Model Context Protocol：[Discovery（`server/discover`）](https://modelcontextprotocol.io/specification/2026-07-28/server/discover)（返回 `supportedVersions`、`capabilities` 与 `serverInfo`，每个请求在 `_meta` 带版本）。
+- Model Context Protocol：[Tools（2026-07-28）](https://modelcontextprotocol.io/specification/2026-07-28/server/tools)（`tools/list`、`tools/call`、`inputSchema`/`outputSchema`、结构化内容与错误处理）。
+- Model Context Protocol：[Versioning and Compatibility](https://modelcontextprotocol.io/specification/2026-07-28/basic/versioning)（modern/legacy/dual-era 三代实现与 `UnsupportedProtocolVersionError`）。
+- Model Context Protocol：[Subscriptions（`subscriptions/listen`）](https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/subscriptions)（变更订阅取代 `resources/subscribe`）。
 - OWASP GenAI：[LLM03:2026 Excessive Agency](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/)（委派与多 Agent 场景下的身份与授权传递要求）。
 - Anthropic Engineering：[Building effective agents](https://www.anthropic.com/engineering/building-effective-agents)（编排者-工作者模式与“优先选择最简单方案”的原则）。
 

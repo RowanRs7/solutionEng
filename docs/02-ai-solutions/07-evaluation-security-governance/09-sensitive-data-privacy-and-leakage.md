@@ -234,7 +234,7 @@ print("异常答复泄露：", leak_scan(bad, mapping))
 
 ## 延伸阅读与下一课
 
-- OWASP LLM02:2025 Sensitive Information Disclosure：泄露的成因、影响与缓解（含最小权限、脱敏、输出校验、供应商边界）：[LLM02:2025 Sensitive Information Disclosure](https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/)
+- OWASP LLM02 Sensitive Information Disclosure：泄露的成因、影响与缓解（含最小权限、脱敏、输出校验、供应商边界；2026 版编号不变，仍为 LLM02:2026）：[LLM02 详情页（2025 版）](https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/)
 - 《生成式人工智能服务管理暂行办法》第十一条要求不得收集非必要个人信息，不得非法留存或向他人提供使用者输入信息与使用记录（2023-08-15 施行）：[生成式人工智能服务管理暂行办法](https://www.cac.gov.cn/2023-07/13/c_1690898327029107.htm)
 - 《人工智能生成合成内容标识办法》第九条对特定情形要求日志留存不少于六个月，可用于理解“留存期由法规与业务共同决定”（2025-09-01 施行）：[人工智能生成合成内容标识办法](https://www.cac.gov.cn/2025-03/14/c_1743654684782215.htm)
 - 法规与厂商留存策略变化较快，本文核对于 2026-10；具体合规结论请以法务意见与当期合同为准。

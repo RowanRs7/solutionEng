@@ -226,7 +226,7 @@ for case in [
 
 - OpenAI 论文《The Instruction Hierarchy: Training LLMs to Prioritize Privileged Instructions》（不同优先级指令冲突时的行为定义）：[arxiv.org/abs/2404.13208](https://arxiv.org/abs/2404.13208)，复核日期 2026-10-19。
 - Azure OpenAI 推理模型文档中的 developer 消息说明（与 system 功能相同）：[learn.microsoft.com/.../how-to/reasoning](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/reasoning)，复核日期 2026-10-19。
-- OWASP Gen AI Security Project LLM01:2025 Prompt Injection（注入的分类与缓解建议）：[genai.owasp.org/llmrisk/llm01-prompt-injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)，复核日期 2026-10-19。
+- OWASP Gen AI Security Project LLM01 Prompt Injection（注入的分类与缓解建议；2026 版编号仍为 LLM01:2026，详情页为 2025 版内容）：[genai.owasp.org/llmrisk/llm01-prompt-injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)，复核日期 2026-10-19。
 
 - 返回[本单元目录](00-overview.md)。
 - 回看上一课：[模型能力、价格、速度与上下文权衡](01-model-capability-price-speed-tradeoffs.md)。

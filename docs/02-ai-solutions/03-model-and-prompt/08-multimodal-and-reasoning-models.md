@@ -206,7 +206,7 @@ print(f"推理(深度思考):    {deep:.4f} 元  ({deep/plain:.1f} 倍)")
 
 - Azure OpenAI 推理模型文档（推理 token 计费与上下文占用、`reasoning_effort` 取值与适用、25,000 token 预留建议、工具与推理的接口限制、`incomplete` 状态）：[learn.microsoft.com/.../how-to/reasoning](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/reasoning)，复核日期 2026-10-19。
 - Azure OpenAI 结构化输出中的输入模态说明（文本与图像输入）：[learn.microsoft.com/.../how-to/structured-outputs](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/structured-outputs)，复核日期 2026-10-19。
-- OWASP LLM01:2025 Prompt Injection（多模态与外部内容作为注入载体的风险）：[genai.owasp.org/llmrisk/llm01-prompt-injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)，复核日期 2026-10-19。
+- OWASP LLM01 Prompt Injection（多模态与外部内容作为注入载体的风险；2026 版编号仍为 LLM01:2026，详情页为 2025 版内容）：[genai.owasp.org/llmrisk/llm01-prompt-injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/)，复核日期 2026-10-19。
 
 - 返回[本单元目录](00-overview.md)。
 - 回看上一课：[流式响应、批处理与异步任务](07-streaming-batch-and-async.md)。

@@ -214,7 +214,7 @@ print("低 F1 任务:", [(t["id"], round(f, 3)) for t, f in zip(TRACES, f1s) if 
 
 **<u>资金类工具缺少幂等与上限校验，是 AI 应用最常见的不可逆事故。</u>** 重试、并发、人工重复点击都会触发二次执行。工具侧必须要求幂等键、金额上限与状态前置条件（`refund_status` 为可退），评测侧必须有“重复调用即失败”的用例。
 
-**<u>Agent 拥有超出任务所需的工具或权限，等价于把越权风险交给模型判断。</u>** OWASP 在 LLM06:2025 Excessive Agency 中把根因归为功能过多、权限过大、自主性过高三类，对应缓解是缩小工具集、最小权限、关键动作保留人工审批。评测时应专门构造“无权限任务”用例，验证 Agent 会停下并转人工，而不是尝试绕过。
+**<u>Agent 拥有超出任务所需的工具或权限，等价于把越权风险交给模型判断。</u>** OWASP 在 LLM03:2026 Excessive Agency 中把根因归为功能过多、权限过大、自主性过高三类（2025 版编号为 LLM06），对应缓解是缩小工具集、最小权限、关键动作保留人工审批。评测时应专门构造“无权限任务”用例，验证 Agent 会停下并转人工，而不是尝试绕过。
 
 另外两条生产习惯：为每次任务保留幂等键与 trace ID，事故时才能还原调用序列；对外报告成功率时同时给出口径（严格/宽松）与样本量，避免把过程指标当作验收结论。
 
@@ -255,7 +255,7 @@ print("低 F1 任务:", [(t["id"], round(f, 3)) for t, f in zip(TRACES, f1s) if 
 
 - Ragas 的 Agent/工具类指标（Tool Call Accuracy、Tool Call F1、Agent Goal Accuracy）：[List of available metrics](https://docs.ragas.io/en/stable/concepts/metrics/available_metrics/)
 - promptfoo 的轨迹断言（`tool-call-f1`、`trajectory:tool-sequence`、`trajectory:step-count` 等，可直接用于 CI）：[Deterministic metrics](https://www.promptfoo.dev/docs/configuration/expected-outputs/deterministic/)
-- OWASP LLM06:2025 Excessive Agency（功能过多、权限过大、自主性过高的风险与缓解）：[LLM06:2025 Excessive Agency](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/)
+- OWASP LLM03:2026 Excessive Agency（功能过多、权限过大、自主性过高的风险与缓解；2025 版编号为 LLM06）：[LLM06:2025 Excessive Agency（2025 版页面）](https://genai.owasp.org/llmrisk/llm062025-excessive-agency/)
 - 工具与指标清单复核截至 2026-10；框架的断言名称与参数可能随版本变化。
 
 - 返回[本单元目录](00-overview.md)。
