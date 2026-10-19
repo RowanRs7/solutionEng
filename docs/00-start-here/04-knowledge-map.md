@@ -19,7 +19,15 @@ last_reviewed: 2026-10-19
 ## 已发布
 
 - 课程入口与学习准备：当前目录。
-- 传统解决方案：[模块概览](../01-traditional-solutions/00-overview.md)；[需求发现与定义单元](../01-traditional-solutions/01-discovery-and-requirements/00-overview.md)。
+- 传统解决方案：[模块概览](../01-traditional-solutions/00-overview.md)。
+- 传统模块七个单元（按顺序学习）：
+  - [需求发现与定义](../01-traditional-solutions/01-discovery-and-requirements/00-overview.md)
+  - [Web 与网络](../01-traditional-solutions/02-web-and-network/00-overview.md)
+  - [API 与系统集成](../01-traditional-solutions/03-api-and-integration/00-overview.md)
+  - [身份、权限与安全](../01-traditional-solutions/04-identity-and-security/00-overview.md)
+  - [数据与应用架构](../01-traditional-solutions/05-data-and-architecture/00-overview.md)
+  - [开发、测试与交付](../01-traditional-solutions/06-build-test-deliver/00-overview.md)
+  - [运行与持续优化](../01-traditional-solutions/07-operate-and-optimize/00-overview.md)
 - 需求发现课程：
   - [解决方案架构师角色](../01-traditional-solutions/01-discovery-and-requirements/01-solution-architect-role.md)
   - [利益相关者与业务目标](../01-traditional-solutions/01-discovery-and-requirements/02-stakeholders-and-business-goals.md)
@@ -30,12 +38,13 @@ last_reviewed: 2026-10-19
   - [优先级、范围与验收标准](../01-traditional-solutions/01-discovery-and-requirements/07-priorities-scope-and-acceptance.md)
   - [风险与需求交付物](../01-traditional-solutions/01-discovery-and-requirements/08-risks-and-requirement-deliverables.md)
   - [需求发现阶段综合测评](../01-traditional-solutions/01-discovery-and-requirements/09-stage-assessment.md)
+- 每个单元的完整课程清单见该单元概览页；按技术主题查[技术索引](../reference/technology-index.md)。
 - AI 解决方案：计划中。
 
 ## 计划中
 
-- 传统：Web、网络、API、集成、身份、安全、数据、架构、交付和运行。
 - AI：基础、需求、模型、Prompt、RAG、工具、Agent、评测、治理和运维。
+- 传统模块的 `card` 技术卡片与 `advanced` 扩展专题（核心课程已全部发布）。
 
 “计划中”条目只说明学习路线，不创建失效链接。每个单元发布后，才会加入可点击入口。
 

@@ -8,8 +8,18 @@
 
 ## 当前模块
 
-- 传统解决方案：需求、Web、API、身份、数据、交付和运行。
-- AI 解决方案：模型、Prompt、RAG、工具、Agent、评测和治理。
+- 传统解决方案：需求、Web、API、身份、数据、交付和运行（**七个单元已全部发布**）。
+- AI 解决方案：模型、Prompt、RAG、工具、Agent、评测和治理（计划中）。
+
+## 传统解决方案单元
+
+1. [需求发现与定义](docs/01-traditional-solutions/01-discovery-and-requirements/00-overview.md)
+2. [Web 与网络](docs/01-traditional-solutions/02-web-and-network/00-overview.md)
+3. [API 与系统集成](docs/01-traditional-solutions/03-api-and-integration/00-overview.md)
+4. [身份、权限与安全](docs/01-traditional-solutions/04-identity-and-security/00-overview.md)
+5. [数据与应用架构](docs/01-traditional-solutions/05-data-and-architecture/00-overview.md)
+6. [开发、测试与交付](docs/01-traditional-solutions/06-build-test-deliver/00-overview.md)
+7. [运行与持续优化](docs/01-traditional-solutions/07-operate-and-optimize/00-overview.md)
 
 ## 目录
 

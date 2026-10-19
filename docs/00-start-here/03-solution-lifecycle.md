@@ -36,6 +36,6 @@ last_reviewed: 2026-10-19
 
 ![解决方案生命周期七阶段、运行反馈回到需求发现的循环，并突出当前发布的需求发现单元](../assets/diagrams/solution-lifecycle.svg)
 
-[打开 PNG 预览](../assets/diagrams/solution-lifecycle.png)。图中高亮的“发现需求”和“定义需求”是当前已发布单元；其余阶段仍是课程路线。运行与优化的故障、指标和用户反馈会重新进入需求发现，因此阶段关系是可迭代的。
+[打开 PNG 预览](../assets/diagrams/solution-lifecycle.png)。图中高亮的“发现需求”和“定义需求”是需求发现单元的示例路径；传统模块的七个单元现已全部发布，AI 模块仍在计划中。运行与优化的故障、指标和用户反馈会重新进入需求发现，因此阶段关系是可迭代的。
 
 下一步：[知识地图](04-knowledge-map.md)。
