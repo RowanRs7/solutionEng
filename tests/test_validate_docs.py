@@ -174,6 +174,18 @@ class CourseRepositoryTests(unittest.TestCase):
         readme = (repository_root / "README.md").read_text(encoding="utf-8")
         self.assertIn("docs/00-start-here/00-course-introduction.md", readme)
 
+    def test_every_published_unit_has_overview_and_stage_assessment(self):
+        repository_root = Path(__file__).resolve().parents[1]
+        module_root = repository_root / "docs/01-traditional-solutions"
+        unit_directories = sorted(path for path in module_root.iterdir() if path.is_dir())
+
+        self.assertTrue(unit_directories, "expected at least one published unit")
+        for unit_directory in unit_directories:
+            names = {path.name for path in unit_directory.glob("*.md")}
+            self.assertIn("00-overview.md", names, unit_directory.name)
+            assessments = [name for name in names if name.endswith("-stage-assessment.md")]
+            self.assertEqual(len(assessments), 1, unit_directory.name)
+
 
 if __name__ == "__main__":
     unittest.main()
