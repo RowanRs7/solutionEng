@@ -1,10 +1,12 @@
 # AI 解决方案架构师自学课程
 
-这是一套面向有少量 Python 基础、但缺少后端和系统集成经验的中文 Markdown 课程。
+这是一套中文 Markdown 自学课程，适合能阅读和修改简单 Python 代码、但缺少后端和系统集成经验的学习者。不需要先掌握后端框架或云平台。
 
-课程先建立传统解决方案能力，再学习 AI 解决方案能力。预计学习时间为 **60–80 小时**。当前版本暂不包含综合实战平台。
+课程要解决的问题很具体：面对“把几个系统打通，再加一点 AI”这样的需求，怎样把它拆成能设计、能连接、能验收、能上线运行的方案。你不仅会学习模型和 AI 应用，还会补上它们依赖的 Web、API（系统之间的接口）、权限、数据、测试和运维基础。
 
-从[课程导论](docs/00-start-here/00-course-introduction.md)开始。
+学习顺序是**先建立传统解决方案能力，再学习 AI 解决方案能力**。预计学习时间为 **60–80 小时**。当前版本暂不包含综合实战平台。
+
+第一次学习，请从[课程导论](docs/00-start-here/00-course-introduction.md)开始，再按[学习指南](docs/00-start-here/01-learning-guide.md)完成环境准备并进入传统模块。
 
 ## 当前模块
 
@@ -34,6 +36,8 @@
 
 ## 目录
 
+- [课程导论](docs/00-start-here/00-course-introduction.md)
 - [学习指南](docs/00-start-here/01-learning-guide.md)
+- [环境准备](docs/00-start-here/02-environment-setup.md)
 - [解决方案生命周期](docs/00-start-here/03-solution-lifecycle.md)
 - [知识地图](docs/00-start-here/04-knowledge-map.md)

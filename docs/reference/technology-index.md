@@ -10,14 +10,16 @@ prerequisites:
   - knowledge-map
 outcomes:
   - 按主题查找课程
-last_reviewed: 2026-10-19
+last_reviewed: 2026-11-18
 ---
 
 # 技术索引
 
+这一页只做一件事：让你尽快找到该读哪一课。先按主题锁定范围，再点开课程；每门课都是独立单元，带着具体问题去读，比从头刷一遍效率高。
+
 ## 已发布主题
 
-- Web 与网络：
+- Web 与网络：请求发不出去、证书报错、跨域被拦、缓存不生效，先从这组查起。
   - [Web 与网络](../01-traditional-solutions/02-web-and-network/00-overview.md)
   - [客户端、服务端与网络分层](../01-traditional-solutions/02-web-and-network/01-web-architecture-and-layers.md)
   - [TCP/IP、DNS 与防火墙](../01-traditional-solutions/02-web-and-network/02-tcp-ip-dns-and-firewall.md)
@@ -29,7 +31,7 @@ last_reviewed: 2026-10-19
   - [curl 与网络诊断](../01-traditional-solutions/02-web-and-network/08-curl-and-network-diagnostics.md)
   - [反向代理、负载均衡与 CDN](../01-traditional-solutions/02-web-and-network/09-reverse-proxy-load-balancer-cdn.md)
   - [Web 与网络阶段综合测评](../01-traditional-solutions/02-web-and-network/10-stage-assessment.md)
-- API 与系统集成：
+- API 与系统集成：要设计接口、对接第三方，或者处理超时重试、消息队列时来这组。
   - [API 与系统集成](../01-traditional-solutions/03-api-and-integration/00-overview.md)
   - [API、REST 与资源建模](../01-traditional-solutions/03-api-and-integration/01-api-rest-and-resource-modeling.md)
   - [OpenAPI 与接口契约](../01-traditional-solutions/03-api-and-integration/02-openapi-and-contracts.md)
@@ -45,7 +47,7 @@ last_reviewed: 2026-10-19
   - [ETL、ELT、CDC 与数据同步](../01-traditional-solutions/03-api-and-integration/12-etl-elt-cdc-and-data-sync.md)
   - [同步与异步集成模式选型](../01-traditional-solutions/03-api-and-integration/13-sync-vs-async-integration-selection.md)
   - [API 与集成阶段综合测评](../01-traditional-solutions/03-api-and-integration/14-stage-assessment.md)
-- 身份、权限与安全：
+- 身份、权限与安全：登录、令牌、单点登录、多租户越权、密钥泄露，这类问题都在这组。
   - [身份、权限与安全](../01-traditional-solutions/04-identity-and-security/00-overview.md)
   - [认证、授权与审计](../01-traditional-solutions/04-identity-and-security/01-authentication-authorization-and-audit.md)
   - [密码、MFA、Session 与 API Key](../01-traditional-solutions/04-identity-and-security/02-passwords-mfa-session-and-apikeys.md)
@@ -58,7 +60,7 @@ last_reviewed: 2026-10-19
   - [常见 Web/API 攻击与安全设计](../01-traditional-solutions/04-identity-and-security/09-web-api-attacks-and-secure-design.md)
   - [数据分类、脱敏与合规基础](../01-traditional-solutions/04-identity-and-security/10-data-classification-encryption-and-compliance.md)
   - [身份与安全阶段综合测评](../01-traditional-solutions/04-identity-and-security/11-stage-assessment.md)
-- 数据与应用架构：
+- 数据与应用架构：表怎么设计、查询为什么慢、缓存怎么失效、系统怎么选型，来这里找。
   - [数据与应用架构](../01-traditional-solutions/05-data-and-architecture/00-overview.md)
   - [SQL、表设计与数据关系](../01-traditional-solutions/05-data-and-architecture/01-sql-tables-and-relationships.md)
   - [索引、事务、锁与数据库迁移](../01-traditional-solutions/05-data-and-architecture/02-indexes-transactions-and-migrations.md)
@@ -71,7 +73,7 @@ last_reviewed: 2026-10-19
   - [高可用、容错与灾难恢复](../01-traditional-solutions/05-data-and-architecture/09-high-availability-and-disaster-recovery.md)
   - [架构权衡、ADR 与容量成本](../01-traditional-solutions/05-data-and-architecture/10-architecture-tradeoffs-and-adr.md)
   - [数据与架构阶段综合测评](../01-traditional-solutions/05-data-and-architecture/11-stage-assessment.md)
-- 开发、测试与交付：
+- 开发、测试与交付：从写第一个服务到接入流水线，包括 Docker、Kubernetes 和回滚。
   - [开发、测试与交付](../01-traditional-solutions/06-build-test-deliver/00-overview.md)
   - [FastAPI 最小服务与项目分层](../01-traditional-solutions/06-build-test-deliver/01-fastapi-service-and-layering.md)
   - [依赖、虚拟环境、配置与 Secret](../01-traditional-solutions/06-build-test-deliver/02-dependencies-config-and-secrets.md)
@@ -84,7 +86,7 @@ last_reviewed: 2026-10-19
   - [CI/CD、变更、灰度与回滚](../01-traditional-solutions/06-build-test-deliver/09-cicd-migrations-canary-and-rollback.md)
   - [云计算、Kubernetes 与 IaC](../01-traditional-solutions/06-build-test-deliver/10-cloud-kubernetes-and-iac.md)
   - [开发、测试与交付阶段综合测评](../01-traditional-solutions/06-build-test-deliver/11-stage-assessment.md)
-- 运行与持续优化：
+- 运行与持续优化：上线之后的事，日志指标、告警、容量成本和故障复盘都在这里。
   - [运行与持续优化](../01-traditional-solutions/07-operate-and-optimize/00-overview.md)
   - [日志、指标、Tracing 与告警](../01-traditional-solutions/07-operate-and-optimize/01-logs-metrics-tracing-and-alerting.md)
   - [Correlation ID 与请求链路](../01-traditional-solutions/07-operate-and-optimize/02-correlation-id-and-request-tracing.md)
@@ -95,7 +97,7 @@ last_reviewed: 2026-10-19
   - [备份、恢复与业务连续性](../01-traditional-solutions/07-operate-and-optimize/07-backup-restore-and-business-continuity.md)
   - [Runbook 与知识移交](../01-traditional-solutions/07-operate-and-optimize/08-runbooks-and-operational-handover.md)
   - [运行与优化阶段综合测评](../01-traditional-solutions/07-operate-and-optimize/09-stage-assessment.md)
-- 需求发现：
+- 需求发现：还没开始画架构时先看这组，把目标、相关人、现状和需求边界理清楚。
   - [解决方案架构师角色](../01-traditional-solutions/01-discovery-and-requirements/01-solution-architect-role.md)
   - [利益相关者与业务目标](../01-traditional-solutions/01-discovery-and-requirements/02-stakeholders-and-business-goals.md)
   - [现状调研与业务流程](../01-traditional-solutions/01-discovery-and-requirements/03-current-state-and-business-process.md)
@@ -105,11 +107,11 @@ last_reviewed: 2026-10-19
   - [优先级、范围与验收标准](../01-traditional-solutions/01-discovery-and-requirements/07-priorities-scope-and-acceptance.md)
   - [风险登记表与需求交付包](../01-traditional-solutions/01-discovery-and-requirements/08-risks-and-requirement-deliverables.md)
   - [阶段综合测评](../01-traditional-solutions/01-discovery-and-requirements/09-stage-assessment.md)
-- 生命周期：见[生命周期](../00-start-here/03-solution-lifecycle.md)。
+- 生命周期：见[生命周期](../00-start-here/03-solution-lifecycle.md)。先看整体阶段划分，再决定当前该补哪一块。
 
 ## AI 解决方案
 
-- AI 基础：
+- AI 基础：第一次接触 AI 方案，先补 Token、上下文、幻觉这些底层概念，后面的选型和排障才听得懂。
   - [AI 基础](../02-ai-solutions/01-ai-foundations/00-overview.md)
   - [AI 解决方案的组成与生命周期](../02-ai-solutions/01-ai-foundations/01-ai-solution-composition-and-lifecycle.md)
   - [机器学习、深度学习与生成式 AI](../02-ai-solutions/01-ai-foundations/02-ml-dl-and-generative-ai.md)
@@ -121,7 +123,7 @@ last_reviewed: 2026-10-19
   - [预训练、微调、推理与模型服务](../02-ai-solutions/01-ai-foundations/08-pretraining-finetuning-and-serving.md)
   - [云端、开源、本地与混合模型方案](../02-ai-solutions/01-ai-foundations/09-cloud-open-source-local-and-hybrid.md)
   - [AI 基础阶段综合测评](../02-ai-solutions/01-ai-foundations/10-stage-assessment.md)
-- AI 需求发现与定义：
+- AI 需求发现与定义：判断一个问题该不该用 AI、用在哪一步、怎么验收，先来这组。
   - [AI 需求发现与定义](../02-ai-solutions/02-discovery-and-requirements/00-overview.md)
   - [识别适合 AI 的业务问题](../02-ai-solutions/02-discovery-and-requirements/01-identify-ai-suitable-problems.md)
   - [规则系统、搜索、传统机器学习与 LLM 的选择](../02-ai-solutions/02-discovery-and-requirements/02-rules-search-ml-or-llm.md)
@@ -132,7 +134,7 @@ last_reviewed: 2026-10-19
   - [准确性、延迟、成本与业务指标](../02-ai-solutions/02-discovery-and-requirements/07-accuracy-latency-cost-and-metrics.md)
   - [AI 验收标准、ROI 与优先级](../02-ai-solutions/02-discovery-and-requirements/08-ai-acceptance-criteria-and-roi.md)
   - [AI 需求阶段综合测评](../02-ai-solutions/02-discovery-and-requirements/09-stage-assessment.md)
-- 模型选择与 Prompt 设计：
+- 模型选择与 Prompt 设计：选模型、写提示词、约束输出格式、控制成本时来这组。
   - [模型选择与 Prompt 设计](../02-ai-solutions/03-model-and-prompt/00-overview.md)
   - [模型能力、价格、速度与上下文权衡](../02-ai-solutions/03-model-and-prompt/01-model-capability-price-speed-tradeoffs.md)
   - [指令层级与 System Prompt](../02-ai-solutions/03-model-and-prompt/02-instruction-hierarchy-and-system-prompts.md)
@@ -144,7 +146,7 @@ last_reviewed: 2026-10-19
   - [多模态输入与推理模型边界](../02-ai-solutions/03-model-and-prompt/08-multimodal-and-reasoning-models.md)
   - [模型路由、降级与何时停止优化 Prompt](../02-ai-solutions/03-model-and-prompt/09-model-routing-and-when-to-stop.md)
   - [模型与 Prompt 阶段综合测评](../02-ai-solutions/03-model-and-prompt/10-stage-assessment.md)
-- Embedding、检索与 RAG：
+- Embedding、检索与 RAG：做知识库问答，关心“召回准不准、引用能不能信”时来这组。
   - [Embedding、检索与 RAG](../02-ai-solutions/04-rag-and-knowledge/00-overview.md)
   - [Embedding、向量与语义相似度](../02-ai-solutions/04-rag-and-knowledge/01-embeddings-vectors-and-similarity.md)
   - [距离度量、向量索引与向量数据库](../02-ai-solutions/04-rag-and-knowledge/02-vector-index-and-vector-databases.md)
@@ -158,7 +160,7 @@ last_reviewed: 2026-10-19
   - [RAG 评测与错误分析](../02-ai-solutions/04-rag-and-knowledge/10-rag-evaluation-and-error-analysis.md)
   - [Graph RAG、长上下文与微调的选择](../02-ai-solutions/04-rag-and-knowledge/11-graph-rag-and-rag-vs-alternatives.md)
   - [RAG 阶段综合测评](../02-ai-solutions/04-rag-and-knowledge/12-stage-assessment.md)
-- 工具调用、Workflow 与 Agent：
+- 工具调用、Workflow 与 Agent：要让模型调用外部工具、编排多步流程时来这组。
   - [工具调用、Workflow 与 Agent](../02-ai-solutions/05-tools-and-agents/00-overview.md)
   - [Function Calling 的工作机制](../02-ai-solutions/05-tools-and-agents/01-function-calling-mechanics.md)
   - [工具描述、参数 Schema 与返回值](../02-ai-solutions/05-tools-and-agents/02-tool-schemas-and-descriptions.md)
@@ -170,7 +172,7 @@ last_reviewed: 2026-10-19
   - [MCP、单 Agent 与多 Agent 的边界](../02-ai-solutions/05-tools-and-agents/08-mcp-and-single-vs-multi-agent.md)
   - [工具超时、重试、沙箱、审计与失败模式](../02-ai-solutions/05-tools-and-agents/09-tool-reliability-sandbox-and-failure-modes.md)
   - [工具与 Agent 阶段综合测评](../02-ai-solutions/05-tools-and-agents/10-stage-assessment.md)
-- AI 应用架构与传统集成：
+- AI 应用架构与传统集成：要把 AI 接进现有系统，处理网关、队列、权限传递时来这组。
   - [AI 应用架构与传统集成](../02-ai-solutions/06-ai-application-architecture/00-overview.md)
   - [生产级 AI 请求的完整链路](../02-ai-solutions/06-ai-application-architecture/01-production-ai-request-path.md)
   - [FastAPI 接入模型服务](../02-ai-solutions/06-ai-application-architecture/02-fastapi-and-model-integration.md)
@@ -182,7 +184,7 @@ last_reviewed: 2026-10-19
   - [SSO、RBAC 与 AI 权限传递](../02-ai-solutions/06-ai-application-architecture/08-sso-rbac-and-permission-propagation.md)
   - [企业数据接入、人工接管与确定性规则组合](../02-ai-solutions/06-ai-application-architecture/09-enterprise-data-integration-and-feedback.md)
   - [AI 应用架构阶段综合测评](../02-ai-solutions/06-ai-application-architecture/10-stage-assessment.md)
-- 评测、安全与治理：
+- 评测、安全与治理：上线前后回答三个问题——效果好不好、会不会出事、怎么留下证据。
   - [评测、安全与治理](../02-ai-solutions/07-evaluation-security-governance/00-overview.md)
   - [AI 测试与传统测试的差异](../02-ai-solutions/07-evaluation-security-governance/01-ai-testing-vs-traditional.md)
   - [Golden Dataset 与评测样本设计](../02-ai-solutions/07-evaluation-security-governance/02-golden-datasets-and-sample-design.md)
@@ -196,7 +198,7 @@ last_reviewed: 2026-10-19
   - [越权工具调用、Guardrail 与审批](../02-ai-solutions/07-evaluation-security-governance/10-excessive-agency-guardrails-and-approval.md)
   - [内容安全、审计、版权与 AI 治理](../02-ai-solutions/07-evaluation-security-governance/11-content-safety-audit-and-governance.md)
   - [评测与治理阶段综合测评](../02-ai-solutions/07-evaluation-security-governance/12-stage-assessment.md)
-- 部署、运行与优化：
+- 部署、运行与优化：上线运行阶段的事，GPU、并发、成本、故障定位、灰度回滚都在这组。
   - [部署、运行与优化](../02-ai-solutions/08-deploy-operate-optimize/00-overview.md)
   - [托管 API、自建推理与混合部署](../02-ai-solutions/08-deploy-operate-optimize/01-hosted-api-self-hosted-and-hybrid.md)
   - [GPU、推理端点与容量](../02-ai-solutions/08-deploy-operate-optimize/02-gpu-endpoints-and-capacity.md)
